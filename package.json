@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/reiv003/Tema_4/issues"
   },
-  "homepage": "https://github.com/reiv003/Tema_4#readme"
+  "homepage": "https://github.com/reiv003/Tema_4#readme",
+  "dependencies": {
+    "vue": "^3.2.22",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.4",
+    "@vue/compiler-sfc": "^3.2.22",
+    "vite": "^2.6.14"
+  }
 }
