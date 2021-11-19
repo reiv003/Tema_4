@@ -1,6 +1,6 @@
 <template>
-  <div>Dette er Quiz</div>
-  <div>QUIZZZ</div>
+  <div>Dette er Tabell</div>
+  <div>TABELLLL</div>
 </template>
 
 <script>
