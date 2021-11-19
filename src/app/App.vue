@@ -1,16 +1,19 @@
 <template>
   <div>Hei 2</div>
   <!-- <RouterView /> -->
+  <Dashboard />
+  <Quiz />
 </template>
 
 <script>
-  export default {
-    components: {},
-  };
+import Dashboard from "../views/Dashboard.vue";
+export default {
+  components: { Dashboard },
+};
 </script>
 
 <style>
-  @import "../styles/reset.css";
-  @import "../styles/variables.css";
-  @import "../styles/style.css";
+@import "../styles/reset.css";
+@import "../styles/variables.css";
+@import "../styles/style.css";
 </style>
