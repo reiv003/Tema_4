@@ -6,6 +6,8 @@
     <RouterLink :to="{ name: 'quiz' }">Go to /quiz</RouterLink>
     <br />
     <RouterLink :to="{ name: 'dashboard' }">Go to 3000 (dashboard)</RouterLink>
+    <br />
+    <RouterLink :to="{ name: 'contact_us' }">Go to contact_us</RouterLink>
   </header>
   <div>App.vue</div>
 
