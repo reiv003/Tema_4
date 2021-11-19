@@ -1,7 +1,7 @@
 <template>
-  <div>Her er dashboardet</div>
+  <div>Dette er Tabell</div>
+  <div>TABELLLL</div>
 </template>
-
 
 <script>
 export default {
@@ -12,7 +12,4 @@ export default {
 </script>
 
 <style>
-header .router-link-active {
-  background: yellow;
-}
 </style>
