@@ -1,6 +1,5 @@
 <template>
-  <div>Her er dashboardet</div>
-  <div class="dashboard-components"><ContactForm /></div>
+  <ContactForm />
 </template>
 
 <script>
@@ -18,7 +17,4 @@
 </script>
 
 <style>
-  .dashboard-components .contact-form {
-    max-width: 300px;
-  }
 </style>

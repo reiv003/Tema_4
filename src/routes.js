@@ -1,8 +1,10 @@
 import Dashboard from './views/Dashboard.vue';
 import Quiz from './views/Quiz.vue';
+import ContactUs from './views/ContactUs.vue';
 
 export default [
-	{ name: 'dashboard', path: '/', component: Dashboard },
+	{ name: 'dashboard', path: '/dashboard', component: Dashboard },
 	{ name: 'quiz', path: '/quiz', component: Quiz },
+	{ name: 'contact_us', path: '/kontakt-oss', component: ContactUs }
 
 ]

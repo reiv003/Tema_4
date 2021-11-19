@@ -1,11 +1,16 @@
 <template>
   <div>Hei 2</div>
-  <!-- <RouterView /> -->
+
+  <RouterView />
 </template>
 
 <script>
+  import ContactForm from "../components/ContactForm.vue";
+
   export default {
-    components: {},
+    components: {
+      ContactForm,
+    },
   };
 </script>
 
