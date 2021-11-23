@@ -8,9 +8,8 @@
 
 <script>
 import Header from "../components/Header.vue";
-
 import ContactForm from "../components/ContactForm.vue";
-import QuizApp from "../components/QuisApp.vue";
+import QuizApp from "../components/QuizApp.vue"; //  I dont know why this is an error
 
 export default {
   components: {
@@ -26,6 +25,10 @@ export default {
 </script>
 
 <style>
+.dashboard-components {
+  margin-top: 2em;
+}
+
 .dashboard-components .contact-form {
   max-width: 300px;
 }
