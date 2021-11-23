@@ -1,13 +1,15 @@
 <template>
-  <div>Dette er Quiz</div>
-  <div>QUIZZZ</div>
+  <QuizApp />
 </template>
 
 <script>
+import QuisApp from "../components/QuisApp.vue";
+
 export default {
-  data() {
-    return {};
+  components: {
+    QuisApp,
   },
+  data() {},
 };
 </script>
 

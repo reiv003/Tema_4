@@ -1,18 +1,22 @@
 <template>
   <div>Her er dashboardet</div>
-  <div class="dashboard-components"><ContactForm /></div>
   <div class="dashboard-components"><Header /></div>
+  <div class="dashboard-components"><ContactForm /></div>
+  <div class="dashboard-components"><QuizApp /></div>
 </template>
 
 
 <script>
-import ContactForm from "../components/ContactForm.vue";
 import Header from "../components/Header.vue";
+
+import ContactForm from "../components/ContactForm.vue";
+import QuizApp from "../components/QuisApp.vue";
 
 export default {
   components: {
-    ContactForm,
     Header,
+    ContactForm,
+    QuizApp,
   },
 
   data() {
@@ -23,6 +27,10 @@ export default {
 
 <style>
 .dashboard-components .contact-form {
+  max-width: 300px;
+}
+
+.dashboard-components .quiz-form {
   max-width: 300px;
 }
 </style>

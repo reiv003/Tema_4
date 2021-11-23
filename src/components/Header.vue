@@ -1,12 +1,20 @@
 <template>
   <header>
-    <RouterLink :to="{ name: 'tabell' }">Go to tabell</RouterLink>
+    <div class="item table">
+      <RouterLink :to="{ name: 'tabell' }">Go to tabell</RouterLink>
+    </div>
     <br />
-    <RouterLink :to="{ name: 'quiz' }">Go to quiz</RouterLink>
+    <div class="item quiz">
+      <RouterLink :to="{ name: 'quiz' }">Go to quiz</RouterLink>
+    </div>
     <br />
-    <RouterLink :to="{ name: 'dashboard' }">Go to dashboard</RouterLink>
+    <div class="item contact">
+      <RouterLink :to="{ name: 'contact_us' }">Go to contact_us</RouterLink>
+    </div>
     <br />
-    <RouterLink :to="{ name: 'contact_us' }">Go to contact_us</RouterLink>
+    <div class="item contact">
+      <RouterLink :to="{ name: 'dashboard' }">Go to dashboard</RouterLink>
+    </div>
   </header>
 </template>
 
@@ -15,11 +23,11 @@ export default {};
 </script>
 
 <style>
-header .router-link-active {
-  background: yellow;
-}
-
 header {
   font-size: 24px;
+}
+
+.item {
+  background: cadetblue;
 }
 </style>

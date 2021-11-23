@@ -1,6 +1,4 @@
 <template>
-  <div>Hei 2</div>
-
   <RouterView />
 </template>
 
