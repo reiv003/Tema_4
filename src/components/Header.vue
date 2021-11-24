@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="item table">
-      <RouterLink :to="{ name: 'tabell' }">Go to tabell</RouterLink>
+      <RouterLink :to="{ name: 'time_table' }">Go to tabell</RouterLink>
     </div>
     <br />
     <div class="item quiz">
@@ -19,15 +19,15 @@
 </template>
 
 <script>
-export default {};
+  export default {};
 </script>
 
 <style>
-header {
-  font-size: 24px;
-}
+  header {
+    font-size: 24px;
+  }
 
-.item {
-  background: cadetblue;
-}
+  .item {
+    background: cadetblue;
+  }
 </style>

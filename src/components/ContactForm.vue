@@ -61,10 +61,4 @@
   .contact-form__input + .contact-form__input {
     margin-top: 0.5em;
   }
-
-  .contact-form__radio {
-    background-color: white;
-    padding: var(--padding);
-    border-radius: 0.5em;
-  }
 </style>
