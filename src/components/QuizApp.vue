@@ -1,49 +1,40 @@
 <template>
-  <div>Play quiz here</div>
-
-  <section id="stopwatch">
-    <p>{{ stopwatch }}</p>
-    <button @click="start">Start</button>
-    <button @click="stop">Stop</button>
-    <button @click="reset">Reset</button>
-  </section>
-  <main class="quiz-form">
-    <div class="mainBox">
-      <div class="question">Hva er ?</div>
-      <button class="answer">svar 1</button>
-      <button class="answer">svar 2</button>
-    </div>
+  <main class="main-box">
+    <div>{{ title }}</div>
+    <div class="main-box__question">{{ question }}</div>
+    <button v-on:click="score -= 1" class="main-box__answer">
+      {{ answer_1 }}
+    </button>
+    <button v-on:click="score += 1" class="main-box__answer">
+      {{ answer_2 }}
+    </button>
+    <div>Din score er {{ score }}</div>
   </main>
 </template>
 
 <script>
 export default {
-  name: "stopwatch",
+  props: {
+    title: {
+      type: String,
+      default: "Min quiz",
+    },
+  },
   data() {
     return {
-      timeGone: 0,
-      timer: undefined,
+      question: "Er dette en bra quiz?",
+      answer_1: "ja",
+      answer_2: "nei",
+      score: 0,
     };
   },
-  computed: {
-    stopwatch() {
-      const date = new Date(null);
-      date.setSeconds(this.timeGone / 1000);
-      const utc = date.toUTCString(); // makes a string like this; Www, dd Mmm yyyy hh:mm:ss GMT
-      return utc.substr(utc.indexOf(":") - 2, 8); // -2, 8 choses this format -> hh:mm:ss  Link to substr: (it says its no longer recomended, but i can only make it work with it) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr
-    },
-  },
+
   methods: {
-    start() {
-      this.timer = setInterval(() => {
-        this.timeGone += 1000;
-      }, 1000);
+    wrong() {
+      console.log("wrong");
     },
-    stop() {
-      clearInterval(this.timer);
-    },
-    reset() {
-      this.timeGone = 0;
+    correct() {
+      console.log("correct");
     },
   },
 };
@@ -51,15 +42,16 @@ export default {
 
 
 <style>
-.mainBox {
+.main-box {
   display: flex;
   flex-flow: column;
-  width: 40vw;
+  width: 50vw;
   height: 70vh;
   align-items: center;
+  border: 5px solid pink;
 }
 
-.question {
+.main-box__question {
   background: powderblue;
   width: 40vw;
   height: 40vh;
@@ -67,7 +59,7 @@ export default {
   text-align: center;
 }
 
-.answer {
+.main-box__answer {
   border: 2px solid black;
   width: 35vw;
   height: 7vh;
@@ -76,4 +68,28 @@ export default {
   background: none;
   font-size: 24px;
 }
+/*
+.nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 40vw;
+  height: 2.5vw;
+  margin-top: 0.5em;
+}
+
+.nav__next {
+  width: 10vw;
+  background: grey;
+  border-radius: 15px;
+  border: none;
+}
+
+.nav__back {
+  width: 10vw;
+  background: grey;
+  border-radius: 15px;
+  border: none;
+}
+*/
 </style>
