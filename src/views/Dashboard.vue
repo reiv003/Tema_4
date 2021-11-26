@@ -1,5 +1,4 @@
 <template>
-  <div>Her er dashboardet</div>
   <div class="dashboard-components"><Header /></div>
   <div class="dashboard-components"><QuizApp /></div>
   <div class="dashboard-components"><Table /></div>
