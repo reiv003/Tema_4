@@ -1,24 +1,23 @@
 <template>
   <header>
     <h1>Studerings-app</h1>
-    <div class="item table">
-      <RouterLink :to="{ name: 'time_table' }">Go to tabell</RouterLink>
+    <div class="item">
+      <RouterLink :to="{ name: 'time_table' }">Tabell</RouterLink>
     </div>
-    <br />
-    <div class="item quiz">
-      <RouterLink :to="{ name: 'quiz' }">Go to quiz</RouterLink>
+    <div class="item">
+      <RouterLink :to="{ name: 'quiz' }">Quiz</RouterLink>
     </div>
-    <br />
-    <div class="item contact">
-      <RouterLink :to="{ name: 'contact_us' }">Go to contact_us</RouterLink>
+    <div class="item">
+      <RouterLink :to="{ name: 'contact_us' }">Kontakt oss</RouterLink>
     </div>
-    <br />
-    <div class="item contact">
-      <RouterLink :to="{ name: 'dashboard' }">Go to dashboard</RouterLink>
+    <div class="item">
+      <RouterLink :to="{ name: 'dashboard' }">Dashboard</RouterLink>
     </div>
-    <br />
-    <div class="item contact">
-      <RouterLink :to="{ name: 'to_do' }">Go to to-do list</RouterLink>
+    <div class="item">
+      <RouterLink :to="{ name: 'to_do' }">To-do list</RouterLink>
+    </div>
+    <div class="item">
+      <RouterLink :to="{ name: 'slideshow' }">Slideshow</RouterLink>
     </div>
   </header>
 </template>
@@ -31,11 +30,13 @@ export default {};
 header {
   font-size: 0.7em;
   display: flex;
+  align-items: center;
 }
 
 .item {
   background: cadetblue;
   padding: var(--padding);
   margin: var(--margin);
+  width: 12vw;
 }
 </style>

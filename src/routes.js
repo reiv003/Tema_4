@@ -10,6 +10,6 @@ export default [
 	{ name: 'contact_us', path: '/kontakt-oss', component: ContactUs },
 	{ name: 'time_table', path: '/tabell', component: TimeTable },
 	{ name: 'to_do', path: '/to-do', component: ToDo },
-	{ name: 'slideshow', path: '/slidwshow', component: SlideShow },
+	{ name: 'slideshow', path: '/slideshow', component: SlideShow },
 	{ name: 'dashboard', path: '/', component: Dashboard },
 ]

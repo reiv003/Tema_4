@@ -3,10 +3,10 @@
     <div>{{ title }}</div>
     <div class="main-box__question">{{ question }}</div>
     <button v-on:click="score -= 1" class="main-box__answer">
-      {{ answer_1 }}
+      {{ questions.first_answer }}
     </button>
     <button v-on:click="score += 1" class="main-box__answer">
-      {{ answer_2 }}
+      {{ second_answer }}
     </button>
     <div>Din score er {{ score }}</div>
   </main>
@@ -22,10 +22,13 @@ export default {
   },
   data() {
     return {
-      question: "Er dette en bra quiz?",
-      answer_1: "ja",
-      answer_2: "nei",
-      score: 0,
+      questions: [
+        {
+          question: "Er dette en bra quiz?",
+          first_answer: "ja",
+          second_answer: "nei",
+        },
+      ],
     };
   },
 
