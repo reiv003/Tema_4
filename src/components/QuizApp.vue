@@ -13,11 +13,12 @@
 </template>
 
 <script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: "Min quiz",
+  export default {
+    props: {
+      title: {
+        type: String,
+        default: "Min quiz",
+      },
     },
   },
   data() {
@@ -36,11 +37,16 @@ export default {
     wrong() {
       console.log("wrong");
     },
-    correct() {
-      console.log("correct");
+
+    methods: {
+      wrong() {
+        console.log("wrong");
+      },
+      correct() {
+        console.log("correct");
+      },
     },
-  },
-};
+  };
 </script>
 
 
@@ -72,27 +78,27 @@ export default {
   font-size: 24px;
 }
 /*
-.nav {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  width: 40vw;
-  height: 2.5vw;
-  margin-top: 0.5em;
-}
+                .nav {
+                  display: flex;
+                  flex-flow: row;
+                  justify-content: space-between;
+                  width: 40vw;
+                  height: 2.5vw;
+                  margin-top: 0.5em;
+                }
 
-.nav__next {
-  width: 10vw;
-  background: grey;
-  border-radius: 15px;
-  border: none;
-}
+                .nav__next {
+                  width: 10vw;
+                  background: grey;
+                  border-radius: 15px;
+                  border: none;
+                }
 
-.nav__back {
-  width: 10vw;
-  background: grey;
-  border-radius: 15px;
-  border: none;
-}
-*/
+                .nav__back {
+                  width: 10vw;
+                  background: grey;
+                  border-radius: 15px;
+                  border: none;
+                }
+                */
 </style>

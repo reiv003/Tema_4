@@ -30,13 +30,12 @@ export default {};
 header {
   font-size: 0.7em;
   display: flex;
-  align-items: center;
+  background-color: firebrick;
 }
 
 .item {
   background: cadetblue;
   padding: var(--padding);
   margin: var(--margin);
-  width: 12vw;
 }
 </style>

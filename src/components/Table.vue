@@ -1,29 +1,31 @@
 <template>
-  <div>Timeplan</div>
+  <div class="table-container">
+    <div>Timeplan</div>
 
-  <table>
-    <thead>
-      <tr>
-        <th @click="sort_table_by_subject">Emne</th>
-        <th @click="sort_table_by_date">Dato</th>
-        <th>Kl.</th>
-        <th>Rom</th>
-        <th>Bygg</th>
-        <th>Lærer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="schoolClass in schoolClasses">
-        <td>{{ schoolClass.subject }}</td>
-        <td>{{ schoolClass.date }}</td>
-        <td>{{ schoolClass.time }}</td>
-        <td>{{ schoolClass.room }}</td>
-        <td>{{ schoolClass.building }}</td>
-        <td>{{ schoolClass.teacher }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button @click="sort_table_by_subject">Sorter</button>
+    <table>
+      <thead>
+        <tr>
+          <th @click="sort_table_by_subject">Emne</th>
+          <th @click="sort_table_by_date">Dato</th>
+          <th>Kl.</th>
+          <th>Rom</th>
+          <th>Bygg</th>
+          <th>Lærer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="schoolClass in schoolClasses">
+          <td>{{ schoolClass.subject }}</td>
+          <td>{{ schoolClass.date }}</td>
+          <td>{{ schoolClass.time }}</td>
+          <td>{{ schoolClass.room }}</td>
+          <td>{{ schoolClass.building }}</td>
+          <td>{{ schoolClass.teacher }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button @click="sort_table_by_subject">Sorter</button>
+  </div>
 </template>
 
 <script>
@@ -123,7 +125,17 @@
 </script>
 
 <style>
+  .table-container {
+    font-size: 0.8em;
+  }
+
   th:hover {
     background-color: teal;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .table-container {
+      font-size: 0.3em;
+    }
   }
 </style>
