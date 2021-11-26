@@ -41,7 +41,8 @@
   .dashboard-components {
     margin-top: 0.2em;
     overflow: hidden;
-    margin: var(--margin);
+    margin: 0.2em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .dash-todo {

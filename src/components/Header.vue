@@ -2,23 +2,23 @@
   <header>
     <h1>Studerings-app</h1>
     <div class="item table">
-      <RouterLink :to="{ name: 'time_table' }">Go to tabell</RouterLink>
+      <RouterLink :to="{ name: 'time_table' }">Timeplan</RouterLink>
     </div>
     <br />
     <div class="item quiz">
-      <RouterLink :to="{ name: 'quiz' }">Go to quiz</RouterLink>
+      <RouterLink :to="{ name: 'quiz' }">Quiz</RouterLink>
     </div>
     <br />
     <div class="item contact">
-      <RouterLink :to="{ name: 'contact_us' }">Go to contact_us</RouterLink>
+      <RouterLink :to="{ name: 'contact_us' }">Kontakt oss</RouterLink>
     </div>
     <br />
     <div class="item contact">
-      <RouterLink :to="{ name: 'dashboard' }">Go to dashboard</RouterLink>
+      <RouterLink :to="{ name: 'dashboard' }">Dashboard</RouterLink>
     </div>
     <br />
     <div class="item contact">
-      <RouterLink :to="{ name: 'to_do' }">Go to to-do list</RouterLink>
+      <RouterLink :to="{ name: 'to_do' }">To-do</RouterLink>
     </div>
   </header>
 </template>
@@ -31,12 +31,20 @@
   header {
     font-size: 0.7em;
     display: flex;
-    background-color: firebrick;
+    background-color: var(--header-footer-bg-color);
   }
 
   .item {
-    background: cadetblue;
     padding: var(--padding);
     margin: var(--margin);
+  }
+
+  .item a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .item a:hover {
+    background: cadetblue;
   }
 </style>

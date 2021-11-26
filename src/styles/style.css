@@ -1,18 +1,11 @@
 body {
+	display: grid;
 	background-color: aliceblue;
 	font-size: 40px;
-	display: flex;
-	flex-direction: column;
 	min-height: 100vh;
 	margin: 0;
 }
 
 h1 {
 	font-size: 1.5em;
-}
-
-#app {
-	margin: auto;
-	width: 100%;
-	height: 100%;
 }

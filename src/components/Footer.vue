@@ -14,7 +14,7 @@
 
 <style>
   footer {
-    background-color: firebrick;
+    background-color: var(--header-footer-bg-color);
     height: 2em;
   }
 </style>

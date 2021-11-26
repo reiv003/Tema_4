@@ -127,6 +127,12 @@
 <style>
   .table-container {
     font-size: 0.8em;
+    display: inline-block;
+  }
+
+  th {
+    background: cadetblue;
+    padding: var(--padding);
   }
 
   th:hover {
