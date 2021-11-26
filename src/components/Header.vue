@@ -1,5 +1,6 @@
 <template>
   <header>
+    <h1>Studerings-app</h1>
     <div class="item table">
       <RouterLink :to="{ name: 'time_table' }">Go to tabell</RouterLink>
     </div>
@@ -28,10 +29,13 @@ export default {};
 
 <style>
 header {
-  font-size: 24px;
+  font-size: 0.7em;
+  display: flex;
 }
 
 .item {
   background: cadetblue;
+  padding: var(--padding);
+  margin: var(--margin);
 }
 </style>

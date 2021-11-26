@@ -4,8 +4,8 @@
   <table>
     <thead>
       <tr>
-        <th>Emne</th>
-        <th>Dato</th>
+        <th @click="sort_table_by_subject">Emne</th>
+        <th @click="sort_table_by_date">Dato</th>
         <th>Kl.</th>
         <th>Rom</th>
         <th>Bygg</th>
@@ -13,41 +13,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Matte 1</td>
-        <td>Man 01.12.21</td>
-        <td>10.00 - 12.00</td>
-        <td>U45</td>
-        <td>Hovedbygget</td>
-        <td>Petter Petterson</td>
-      </tr>
-      <tr>
-        <td>Norsk skriftlig</td>
-        <td>Man 01.12.21</td>
-        <td>12.00 - 14.00</td>
-        <td>201</td>
-        <td>Nybygget</td>
-        <td>Oline Jonsen</td>
-      </tr>
-      <tr>
-        <td>Naturfag</td>
-        <td>Tir 02.12.21</td>
-        <td>10.00 - 12.00</td>
-        <td>U45</td>
-        <td>Hovedbygget</td>
-        <td>Petter Petterson</td>
-      </tr>
-      <tr>
-        <td>Historie</td>
-        <td>Ons 03.12.21</td>
-        <td>09.00 - 14.00</td>
-        <td>231</td>
-        <td>Sidebygget</td>
-        <td>Gary Smith</td>
+      <tr v-for="schoolClass in schoolClasses">
+        <td>{{ schoolClass.subject }}</td>
+        <td>{{ schoolClass.date }}</td>
+        <td>{{ schoolClass.time }}</td>
+        <td>{{ schoolClass.room }}</td>
+        <td>{{ schoolClass.building }}</td>
+        <td>{{ schoolClass.teacher }}</td>
       </tr>
     </tbody>
   </table>
-  <button @click="sort_table">Sorter</button>
+  <button @click="sort_table_by_subject">Sorter</button>
 </template>
 
 <script>
@@ -57,7 +33,7 @@
         schoolClasses: [
           {
             subject: "Matte 1",
-            date: "Man" + "01.12.21",
+            date: "2021-12-01",
             time: "10.00 - 12.00",
             room: "U45",
             building: "Hovedbygget",
@@ -65,46 +41,89 @@
           },
           {
             subject: "Norsk skriftlig",
-            date: "Tir" + "02.12.21",
-            time: "12.00 + 14.00",
+            date: "2021-12-02",
+            time: "12.00 - 14.00",
             room: "201",
             building: "Nybygget",
             teacher: "Oline Jonsen",
           },
           {
             subject: "Naturfag",
-            date: "Man" + "01.12.21",
-            time: "10.00 + 12.00",
+            date: "2021-12-01",
+            time: "10.00 - 12.00",
             room: "U45",
             building: "Hovedbygget",
             teacher: "Petter Petterson",
           },
           {
             subject: "Historie",
-            date: "Ons" + "03.12.21",
-            time: "09.00 + 14.00",
+            date: "2021-12-03",
+            time: "09.00 - 14.00",
             room: "231",
             building: "Sidebygget",
             teacher: "Gary Smith",
           },
           {
             subject: "Engelsk",
-            date: "Tor" + "04.12.21",
-            time: "08.00 + 11.00",
+            date: "2021-12-04",
+            time: "08.00 - 11.00",
             room: "132",
             building: "Nybygget",
             teacher: "Trym Dalen",
+          },
+          {
+            subject: "Nynorsk",
+            date: "2021-12-03",
+            time: "08.00 - 11.00",
+            room: "303",
+            building: "Sidebygget",
+            teacher: "Skjalg Dalen",
+          },
+          {
+            subject: "Algebra",
+            date: "2021-11-31",
+            time: "16.00 - 22.00",
+            room: "135",
+            building: "Nybygget",
+            teacher: "Gøril Zachariassen",
           },
         ],
       };
     },
 
     methods: {
-      sort_table() {
-        console.log("table sorted");
+      sort_table_by_date() {
+        this.schoolClasses.sort(function (a, b) {
+          if (a.date < b.date) {
+            return -1;
+          }
+          if (a.date > b.date) {
+            return 1;
+          }
+          return 0;
+        });
+      },
+
+      sort_table_by_subject() {
+        this.schoolClasses.sort(function (a, b) {
+          let subject_a = a.subject.toLowerCase();
+          let subject_b = b.subject.toLowerCase();
+
+          if (subject_a < subject_b) {
+            return -1;
+          }
+          if (subject_a > subject_b) {
+            return 1;
+          }
+          return 0;
+        });
       },
     },
   };
 </script>
 
-<style></style>
+<style>
+  th:hover {
+    background-color: teal;
+  }
+</style>

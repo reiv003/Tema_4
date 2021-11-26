@@ -2,3 +2,13 @@ body {
 	background-color: aliceblue;
 	font-size: 40px;
 }
+
+h1 {
+	font-size: 1.5em;
+}
+
+#app {
+	display: grid;
+	grid-auto-rows: min-content 1fr min-content;
+	margin: auto;
+}
