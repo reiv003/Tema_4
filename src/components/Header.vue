@@ -15,19 +15,23 @@
     <div class="item contact">
       <RouterLink :to="{ name: 'dashboard' }">Go to dashboard</RouterLink>
     </div>
+    <br />
+    <div class="item contact">
+      <RouterLink :to="{ name: 'to_do' }">Go to to-do list</RouterLink>
+    </div>
   </header>
 </template>
 
 <script>
-  export default {};
+export default {};
 </script>
 
 <style>
-  header {
-    font-size: 24px;
-  }
+header {
+  font-size: 24px;
+}
 
-  .item {
-    background: cadetblue;
-  }
+.item {
+  background: cadetblue;
+}
 </style>

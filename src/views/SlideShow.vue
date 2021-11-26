@@ -1,18 +1,13 @@
-
 <template>
-  <Nav />
+  <slide-show />
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import SlideShow from "../components/Slide-show.vue";
 
 export default {
   components: {
-    Header,
-  },
-
-  data() {
-    return {};
+    SlideShow,
   },
 };
 </script>
