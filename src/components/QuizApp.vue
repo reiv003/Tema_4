@@ -1,6 +1,7 @@
 <template>
   <main class="main-box">
     <div>{{ title }}</div>
+    <!--
     <div class="main-box__question">{{ question }}</div>
     <button v-on:click="score -= 1" class="main-box__answer">
       {{ questions.first_answer }}
@@ -8,19 +9,20 @@
     <button v-on:click="score += 1" class="main-box__answer">
       {{ second_answer }}
     </button>
-    <div>Din score er {{ score }}</div>
+    <div>Din score er {{ score }}</div>-->
   </main>
 </template>
 
 <script>
-  export default {
-    props: {
-      title: {
-        type: String,
-        default: "Min quiz",
-      },
+export default {
+  props: {
+    title: {
+      type: String,
+      default: "Min quiz",
     },
   },
+};
+/*
   data() {
     return {
       questions: [
@@ -44,9 +46,10 @@
       },
       correct() {
         console.log("correct");
-      },
-    },
+      }
+    }
   };
+  */
 </script>
 
 
