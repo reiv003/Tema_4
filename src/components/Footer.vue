@@ -1,5 +1,7 @@
 <template>
-  <div>(c) Studerings-app 2021</div>
+  <footer>
+    <div>(c) Studerings-app 2021</div>
+  </footer>
 </template>
 
 <script>
@@ -10,4 +12,9 @@
   };
 </script>
 
-<style></style>
+<style>
+  footer {
+    background-color: firebrick;
+    height: 2em;
+  }
+</style>

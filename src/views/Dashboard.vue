@@ -1,45 +1,85 @@
 <template>
-  <div class="dashboard-components"><Header /></div>
-  <div class="dashboard-components"><QuizApp /></div>
-  <div class="dashboard-components"><Table /></div>
-  <div class="dashboard-components"><ContactForm /></div>
-  <div class="dashboard-components"><TodoList /></div>
-  <div class="dashboard-components"><Slide-show /></div>
+  <div class="dashboard-container">
+    <div class="dashboard-components dash-todo"><TodoList /></div>
+    <div class="dashboard-components dash-quiz"><QuizApp /></div>
+    <div class="dashboard-components dash-slide"><Slide-show /></div>
+    <div class="dashboard-components dash-table"><Table /></div>
+    <div class="dashboard-components dash-contact"><ContactForm /></div>
+  </div>
 </template>
 
 
 <script>
-import Table from "../components/Table.vue";
-import QuizApp from "../components/QuizApp.vue";
-import ContactForm from "../components/ContactForm.vue";
-import TodoList from "../components/TodoList.vue";
-import SlideShow from "../components/Slide-show.vue";
+  import Table from "../components/Table.vue";
+  import QuizApp from "../components/QuizApp.vue";
+  import ContactForm from "../components/ContactForm.vue";
+  import TodoList from "../components/TodoList.vue";
+  import SlideShow from "../components/Slide-show.vue";
 
-export default {
-  components: {
-    QuizApp,
-    Table,
-    ContactForm,
-    TodoList,
-    SlideShow,
-  },
+  export default {
+    components: {
+      QuizApp,
+      Table,
+      ContactForm,
+      TodoList,
+      SlideShow,
+    },
 
-  data() {
-    return {};
-  },
-};
+    data() {
+      return {};
+    },
+  };
 </script>
 
 <style>
-.dashboard-components {
-  margin-top: 2em;
-}
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 100px;
+  }
 
-.dashboard-components .contact-form {
-  max-width: 300px;
-}
+  .dashboard-components {
+    margin-top: 0.2em;
+    overflow: hidden;
+    margin: var(--margin);
+  }
 
-.dashboard-components .quiz-form {
-  max-width: 300px;
-}
+  .dash-todo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    background: grey;
+  }
+
+  .dash-quiz {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background: teal;
+  }
+
+  .dash-slide {
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background: darkgrey;
+  }
+
+  .dash-table {
+    grid-row-start: 5;
+    grid-row-end: 7;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: thistle;
+  }
+
+  .dash-contact {
+    grid-row-start: 7;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: antiquewhite;
+  }
 </style>

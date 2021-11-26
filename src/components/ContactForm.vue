@@ -1,7 +1,6 @@
 <template>
-  <div>Kontakt oss</div>
-
   <div class="contact-form">
+    <div>Kontakt oss</div>
     <input
       class="contact-form__input"
       type="text"

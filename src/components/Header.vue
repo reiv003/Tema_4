@@ -24,18 +24,19 @@
 </template>
 
 <script>
-export default {};
+  export default {};
 </script>
 
 <style>
-header {
-  font-size: 0.7em;
-  display: flex;
-}
+  header {
+    font-size: 0.7em;
+    display: flex;
+    background-color: firebrick;
+  }
 
-.item {
-  background: cadetblue;
-  padding: var(--padding);
-  margin: var(--margin);
-}
+  .item {
+    background: cadetblue;
+    padding: var(--padding);
+    margin: var(--margin);
+  }
 </style>
