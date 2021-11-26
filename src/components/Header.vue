@@ -1,24 +1,23 @@
 <template>
   <header>
     <h1>Studerings-app</h1>
-    <div class="item table">
+    <div class="item">
       <RouterLink :to="{ name: 'time_table' }">Timeplan</RouterLink>
     </div>
-    <br />
-    <div class="item quiz">
+    <div class="item">
       <RouterLink :to="{ name: 'quiz' }">Quiz</RouterLink>
     </div>
-    <br />
-    <div class="item contact">
+    <div class="item">
       <RouterLink :to="{ name: 'contact_us' }">Kontakt oss</RouterLink>
     </div>
-    <br />
-    <div class="item contact">
+    <div class="item">
       <RouterLink :to="{ name: 'dashboard' }">Dashboard</RouterLink>
     </div>
-    <br />
-    <div class="item contact">
-      <RouterLink :to="{ name: 'to_do' }">To-do</RouterLink>
+    <div class="item">
+      <RouterLink :to="{ name: 'to_do' }">To-do list</RouterLink>
+    </div>
+    <div class="item">
+      <RouterLink :to="{ name: 'slideshow' }">Slideshow</RouterLink>
     </div>
   </header>
 </template>

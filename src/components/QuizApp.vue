@@ -3,10 +3,10 @@
     <div>{{ title }}</div>
     <div class="main-box__question">{{ question }}</div>
     <button v-on:click="score -= 1" class="main-box__answer">
-      {{ answer_1 }}
+      {{ questions.first_answer }}
     </button>
     <button v-on:click="score += 1" class="main-box__answer">
-      {{ answer_2 }}
+      {{ second_answer }}
     </button>
     <div>Din score er {{ score }}</div>
   </main>
@@ -20,13 +20,22 @@
         default: "Min quiz",
       },
     },
-    data() {
-      return {
-        question: "Er dette en bra quiz?",
-        answer_1: "ja",
-        answer_2: "nei",
-        score: 0,
-      };
+  },
+  data() {
+    return {
+      questions: [
+        {
+          question: "Er dette en bra quiz?",
+          first_answer: "ja",
+          second_answer: "nei",
+        },
+      ],
+    };
+  },
+
+  methods: {
+    wrong() {
+      console.log("wrong");
     },
 
     methods: {
@@ -42,33 +51,33 @@
 
 
 <style>
-  .main-box {
-    display: flex;
-    flex-flow: column;
-    width: 50vw;
-    height: 70vh;
-    align-items: center;
-    border: 5px solid pink;
-  }
+.main-box {
+  display: flex;
+  flex-flow: column;
+  width: 50vw;
+  height: 70vh;
+  align-items: center;
+  border: 5px solid pink;
+}
 
-  .main-box__question {
-    background: powderblue;
-    width: 40vw;
-    height: 40vh;
-    padding-top: 15vh;
-    text-align: center;
-  }
+.main-box__question {
+  background: powderblue;
+  width: 40vw;
+  height: 40vh;
+  padding-top: 15vh;
+  text-align: center;
+}
 
-  .main-box__answer {
-    border: 2px solid black;
-    width: 35vw;
-    height: 7vh;
-    margin-top: 2em;
-    text-align: center;
-    background: none;
-    font-size: 24px;
-  }
-  /*
+.main-box__answer {
+  border: 2px solid black;
+  width: 35vw;
+  height: 7vh;
+  margin-top: 2em;
+  text-align: center;
+  background: none;
+  font-size: 24px;
+}
+/*
                 .nav {
                   display: flex;
                   flex-flow: row;
