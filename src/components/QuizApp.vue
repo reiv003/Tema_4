@@ -1,15 +1,14 @@
 <template>
   <main class="main-box">
     <div>{{ title }}</div>
-    <!--
-    <div class="main-box__question">{{ question }}</div>
-    <button v-on:click="score -= 1" class="main-box__answer">
-      {{ questions.first_answer }}
+    <div class="main-box__question">hva er?</div>
+    <button @click="wrong" v-on:click="score += 1" class="main-box__answer">
+      svar 1
     </button>
-    <button v-on:click="score += 1" class="main-box__answer">
-      {{ second_answer }}
+    <button @click="correct" v-on:click="score -= 1" class="main-box__answer">
+      svar 2
     </button>
-    <div>Din score er {{ score }}</div>-->
+    <div>Din score er {{ score }}</div>
   </main>
 </template>
 
@@ -20,16 +19,23 @@ export default {
       type: String,
       default: "Min quiz",
     },
+    data: {
+      score: 0,
+    },
   },
-};
-/*
+
   data() {
     return {
       questions: [
         {
-          question: "Er dette en bra quiz?",
-          first_answer: "ja",
-          second_answer: "nei",
+          question: "Is math related to science?",
+          first: "No",
+          second: "Yes",
+        },
+        {
+          question: "Are you dumb?",
+          first: "Yes",
+          second: "No",
         },
       ],
     };
@@ -39,17 +45,11 @@ export default {
     wrong() {
       console.log("wrong");
     },
-
-    methods: {
-      wrong() {
-        console.log("wrong");
-      },
-      correct() {
-        console.log("correct");
-      }
-    }
-  };
-  */
+    correct() {
+      console.log("correct");
+    },
+  },
+};
 </script>
 
 
