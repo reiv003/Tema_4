@@ -1,15 +1,15 @@
 <template>
-  <slide-show />
+  <SlideShowApp />
 </template>
 
 <script>
-import SlideShow from "../components/Slide-show.vue";
+  import SlideShowApp from "../components/SlideShowApp.vue";
 
-export default {
-  components: {
-    SlideShow,
-  },
-};
+  export default {
+    components: {
+      SlideShowApp,
+    },
+  };
 </script>
 
 <style>
