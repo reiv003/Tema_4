@@ -1,52 +1,68 @@
 <template>
   <main class="main-box">
-    <div>{{ title }}</div>
-    <div class="main-box__question">hva er?</div>
-    <button @click="wrong" v-on:click="score += 1" class="main-box__answer">
-      svar 1
+    <div class="main-box__question">{{ currentQuestion.question }}</div>
+    <button @click="correct" class="main-box__answer">
+      {{ currentQuestion.first }}
     </button>
-    <button @click="correct" v-on:click="score -= 1" class="main-box__answer">
-      svar 2
+    <button class="main-box__answer">
+      {{ currentQuestion.second }}
     </button>
-    <div>Din score er {{ score }}</div>
+    <div class="nav__buttons">
+      <button @click="previousQuestion">Forrigje spørsmål</button>
+      <button @click="nextQuestion">Neste spørsmål</button>
+    </div>
+    <div>Scoren din er {{ score }}</div>
   </main>
 </template>
 
 <script>
 export default {
-  props: {
-    title: {
-      type: String,
-      default: "Min quiz",
-    },
-    data: {
-      score: 0,
-    },
-  },
-
   data() {
     return {
+      score: 0,
+      index: 0,
       questions: [
         {
-          question: "Is math related to science?",
-          first: "No",
-          second: "Yes",
+          question: "Hovedstaden i Russland?",
+          first: "Moskva",
+          second: "St. Petersburg",
         },
         {
-          question: "Are you dumb?",
-          first: "Yes",
-          second: "No",
+          question: "Hovedstaden i Kina?",
+          first: "Beijing",
+          second: "Changsa",
+        },
+        {
+          question: "Hovedstaden i Brasil?",
+          first: "Brasilia",
+          second: "Sao Paulo",
+        },
+        {
+          question: "quizzen er ferdig",
         },
       ],
     };
   },
 
-  methods: {
-    wrong() {
-      console.log("wrong");
+  computed: {
+    currentQuestion() {
+      return this.questions[this.index];
     },
+  },
+
+  methods: {
+    previousQuestion() {
+      this.index =
+        this.index === 0 ? this.questions.length - 1 : this.index - 1;
+    },
+
+    nextQuestion() {
+      this.index =
+        this.index === this.questions.length - 1 ? 0 : this.index + 1;
+    },
+
     correct() {
-      console.log("correct");
+      this.score += 1;
     },
   },
 };
@@ -57,9 +73,9 @@ export default {
 .main-box {
   display: flex;
   flex-flow: column;
+  align-items: center;
   width: 50vw;
   height: 70vh;
-  align-items: center;
   border: 5px solid pink;
 }
 
@@ -71,37 +87,31 @@ export default {
   text-align: center;
 }
 
+.main-box__answer:focus {
+  background: blue;
+}
+
 .main-box__answer {
   border: 2px solid black;
   width: 35vw;
   height: 7vh;
-  margin-top: 2em;
+  margin-top: 0.5em;
   text-align: center;
   background: none;
   font-size: 24px;
 }
-/*
-                .nav {
-                  display: flex;
-                  flex-flow: row;
-                  justify-content: space-between;
-                  width: 40vw;
-                  height: 2.5vw;
-                  margin-top: 0.5em;
-                }
 
-                .nav__next {
-                  width: 10vw;
-                  background: grey;
-                  border-radius: 15px;
-                  border: none;
-                }
+.nav__buttons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+  margin-top: 1em;
+}
 
-                .nav__back {
-                  width: 10vw;
-                  background: grey;
-                  border-radius: 15px;
-                  border: none;
-                }
-                */
+.nav__buttons button {
+  width: 15vw;
+  border: 2px solid black;
+  background: none;
+  font-size: 20px;
+}
 </style>
