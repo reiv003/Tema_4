@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="dashboard-components dash-todo"><TodoList /></div>
     <div class="dashboard-components dash-quiz"><QuizApp /></div>
-    <div class="dashboard-components dash-slide"><Slide-show /></div>
+    <div class="dashboard-components dash-slide"><SlideShowApp /></div>
     <div class="dashboard-components dash-table"><Table /></div>
     <div class="dashboard-components dash-contact"><ContactForm /></div>
   </div>
@@ -14,7 +14,7 @@
   import QuizApp from "../components/QuizApp.vue";
   import ContactForm from "../components/ContactForm.vue";
   import TodoList from "../components/TodoList.vue";
-  import SlideShow from "../components/Slide-show.vue";
+  import SlideShowApp from "../components/SlideShowApp.vue";
 
   export default {
     components: {
@@ -22,7 +22,7 @@
       Table,
       ContactForm,
       TodoList,
-      SlideShow,
+      SlideShowApp,
     },
 
     data() {
