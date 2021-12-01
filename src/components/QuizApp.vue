@@ -75,15 +75,15 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 50vw;
-  height: 70vh;
+  width: 50%;
+  height: 70%;
 }
 
 .main-box__question {
   background: powderblue;
-  width: 40vw;
-  height: 40vh;
-  padding-top: 15vh;
+  width: 80%;
+  height: 80%;
+  padding: 15%;
   text-align: center;
 }
 
@@ -93,8 +93,8 @@ export default {
 
 .main-box__answer {
   border: 2px solid black;
-  width: 35vw;
-  height: 7vh;
+  width: 60%;
+  height: 20%;
   margin-top: 0.5em;
   text-align: center;
   background: none;
@@ -109,7 +109,7 @@ export default {
 }
 
 .nav__buttons button {
-  width: 15vw;
+  width: 70%;
   border: 2px solid black;
   background: none;
   font-size: 20px;
