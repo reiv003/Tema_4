@@ -28,37 +28,20 @@
       <div class="todo-list__header__text">{{ title }}</div>
     </div>
 
-    <div class="todo__items">
+    <div class="todo-list__todo">
       <button @click="markTaskAsDone">O</button>
-      <div v-for="task in tasks" class="completed__tasks">
+      <div v-for="task in todoTasks" class="todo-list__todo-tasks">
         {{ task.text }}
       </div>
       <button @click="removeTask">X</button>
-      <!--
-      <TodoItem
-        v-for="(task, index) in todoTasks"
-        :text="task.text"
-        :done="task.done"
-        :key="task.id"
-      />
-      -->
     </div>
 
-    <hr />
-    <!--
-    <div class="compleded">
+    <hr class="todo-list__seperator" />
+
+    <div class="todo-list__compleded">
       <button>O</button>
-      <div class="completed__tasks">Completed this</div>
+      <div class="todo-list__completed-tasks">Completed this</div>
       <button>X</button>
-    </div>
-    -->
-
-    <div class="compleded">
-      <div class="todo-list__item" v-for="value in completedTasks">
-        <button @click="markTaskAsUndone(index)">O</button>
-        <div>completed</div>
-        <button @click="removeDoneTask(index)">X</button>
-      </div>
     </div>
   </div>
 </template>
@@ -69,35 +52,26 @@ export default {
     return {
       title: "Legg til oppgave",
 
-      tasks: [{ text: "Støvsuge", done: false }],
+      todoTasks: [{ text: "bla", done: false }],
 
-      completedTasks: [{ tekst: "Gå tur", done: true }],
+      completedTasks: [{ text: "Gå tur", done: true }],
     };
   },
 
   computed: {
     todoTask() {
-      return this.tasks.filter((task) => task.done === false);
-    },
-
-    completedTasks() {
-      return this.tasks.filter((task) => task.done === true);
+      return this.text.filter((task) => task.done === false);
     },
   },
 
   methods: {
     addTask(text) {
-      this.tasks.push({ id: this.id(), text: this.id(), done: false });
+      this.todoTasks.push({ id: this.id(), text: this.id(), done: false });
     },
 
     removeTask(id) {
-      const taskIndex = this.tasks.findIndex((task) => task.id === id);
-      this.tasks.splice(taskIndex, 1);
-    },
-
-    markTaskAsDone(id) {
-      const taskIndex = this.tasks.findIndex((task) => task.id === id);
-      this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
+      const taskIndex = this.text.findIndex((task) => task.id === id);
+      this.text.splice(taskIndex, 1);
     },
 
     id() {
