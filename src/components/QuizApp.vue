@@ -54,7 +54,7 @@ export default {
     previousQuestion() {
       this.index =
         this.index === 0 ? this.questions.length - 1 : this.index - 1;
-      //this.index === this.questions.slice(0, 2);  // Tried making a method that does not loop the array, but stops it after the last object
+      //this.index === this.questions.slice(0, 2);  // Tried making a method that does not loop the array, but stops it after the last object@
     },
 
     nextQuestion() {
