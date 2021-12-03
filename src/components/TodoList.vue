@@ -70,8 +70,8 @@ export default {
     },
 
     removeTask(id) {
-      const taskIndex = this.text.findIndex((task) => task.id === id);
-      this.text.splice(taskIndex, 1);
+      const taskIndex = this.todoTasks.findIndex((task) => task.id === id);
+      this.todoTasks.splice(taskIndex, 1);
     },
 
     id() {
