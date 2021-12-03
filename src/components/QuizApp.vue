@@ -20,6 +20,7 @@
 
       <button class="quiz-app__hidden-answer">
         {{ currentAlternative.c }}
+
         <!-- Skriv in "scoren din er ... her?" -->
       </button>
     </div>
@@ -28,7 +29,6 @@
       <button @click="previousQuestion">Forrigje spørsmål</button>
       <button @click="nextQuestion">Neste spørsmål</button>
     </div>
-
     <div>Scoren din er {{ score }}</div>
   </main>
 </template>
@@ -55,7 +55,7 @@ export default {
         { a: "Wolfram", b: "Walterium" },
         { a: "7 perioder", b: "9 perioder" },
         { a: "Grupper", b: "Perioder" },
-        { c: "Se score" },
+        { c: "se score" },
       ],
 
       /*
