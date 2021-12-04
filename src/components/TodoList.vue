@@ -1,81 +1,146 @@
 <template>
   <div class="todo-list">
     <div class="todo-list__header">
-      <button @click="addTask" class="todo-list__add-task__svg">
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 15 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line
-            x1="7.55945"
-            x2="7.55945"
-            y2="14.5765"
-            stroke="black"
-            stroke-width="2"
-          />
-          <line
-            y1="7.01709"
-            x2="14.5765"
-            y2="7.01709"
-            stroke="black"
-            stroke-width="2"
-          />
-        </svg>
-      </button>
-      <div class="todo-list__header__text">{{ title }}</div>
-    </div>
-
-    <div class="todo-list__todo">
-      <button @click="markTaskAsDone">O</button>
-      <div v-for="task in todoTasks" class="todo-list__todo-tasks">
-        {{ task.text }}
+      <div class="todo-list__title">
+        Trykk for å legge til oppgave...
+        <!--{{ title }}-->
       </div>
-      <button @click="removeTask">X</button>
+
+      <button @click="addTask" class="todo-list__add-new">
+        <Icons :icon="'add'" />
+      </button>
     </div>
 
-    <hr class="todo-list__seperator" />
+    <!-- TODO TASKS: oppdaterer local storage om todoTasks blir gjort noe med,
+          @-ene fra TodoItem refererer til sine egene methoder lenger ned -->
+    <div class="todo-list__content">
+      <template v-if="tasks.length > 0 && showSeparateLists">
+        <div class="todo-list__items">
+          <TodoItem
+            @updated-task="storeTasksLocally"
+            @done-task="doneTask"
+            @remove-task="removeTask"
+            v-for="task in todoTasks"
+            :task="task"
+          />
+        </div>
 
-    <div class="todo-list__compleded">
-      <button>O</button>
-      <div class="todo-list__completed-tasks">Completed this</div>
-      <button>X</button>
+        <!-- hr dukker bare opp når oppgaver som er gjort > 0, og forsvinner hvis oppgaver som må gjøres> 0 -->
+        <hr
+          class="todo-list__separator"
+          v-if="completedTasks.length > 0 && todoTasks.length > 0"
+        />
+
+        <!-- COMPLETED TASKS: oppdaterer local storage om completedTasks blir gjort noe med
+              @-ene fra TodoItem refererer til sine egene methoder lenger ned -->
+        <div class="todo-list__items">
+          <TodoItem
+            @updated-task="storeTasksLocally"
+            @done-task="doneTask"
+            @remove-task="removeTask"
+            v-for="task in completedTasks"
+            :task="task"
+          />
+        </div>
+      </template>
+
+      <!-- REMOVE TASK: oppdaterer local storage om man sletter tasken
+            @-ene fra TodoItem refererer til sine egene methoder lenger ned -->
+      <template v-else>
+        <div class="todo-list__items">
+          <TodoItem
+            @updated-task="storeTasksLocally"
+            @done-task="doneTask"
+            @remove-task="removeTask"
+            v-for="task in tasks"
+            :task="task"
+          />
+        </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import Icons from "../components/Icons.vue";
+import TodoItem from "../components/TodoItem.vue";
+
 export default {
+  props: {
+    title: { type: String },
+    layout: { type: String },
+  },
+
+  components: {
+    Icons,
+    TodoItem,
+  },
+
   data() {
     return {
-      title: "Legg til oppgave",
-
-      todoTasks: [{ text: "bla", done: false }],
-
-      completedTasks: [{ text: "Gå tur", done: true }],
+      tasks: [],
+      showSeparateLists: true,
     };
   },
 
+  /* Gjør at den husker, selvom man er ute fra siden.. Gjør at hvis localState finnes skal metoden;returnTasksLocally brukes, som returnerer alle objektene i "todo-list-items" som er i local storage til parse (tall)*/
+  created() {
+    const localState = this.returnTasksLocally();
+
+    if (localState) {
+      this.tasks = localState;
+    }
+  },
+
   computed: {
-    todoTask() {
-      return this.text.filter((task) => task.done === false);
+    todoTasks() {
+      return this.tasks.filter((task) => task.done === false);
+    },
+
+    completedTasks() {
+      return this.tasks.filter((task) => task.done === true);
     },
   },
 
   methods: {
-    addTask(text) {
-      this.todoTasks.push({ id: this.id(), text: this.id(), done: false });
+    /* pusher et objekt til arrayet 'tasks' med en random id, ingen tekst og done false */
+    addTask() {
+      this.tasks.push({ id: this.createID(), text: "", done: false });
+      this.storeTasksLocally();
     },
 
-    removeTask(id) {
-      const taskIndex = this.todoTasks.findIndex((task) => task.id === id);
-      this.todoTasks.splice(taskIndex, 1);
+    /* splicer  */
+    removeTask(task) {
+      const taskIndex = this.tasks.findIndex(
+        (task_in_tasks) => task_in_tasks.id === task.id
+      );
+      this.tasks.splice(taskIndex, 1);
+      this.storeTasksLocally();
     },
 
-    id() {
+    doneTask(task) {
+      const taskIndex = this.tasks.findIndex(
+        (task_in_tasks) => task_in_tasks.id === task.id
+      );
+      this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
+      this.storeTasksLocally();
+    },
+
+    createID() {
       return Math.random().toString(36).slice(2);
+    },
+
+    /* Lager  en key i local storage som heter "todo-list-items"*/
+    storeTasksLocally() {
+      window.localStorage.setItem(
+        "todo-list-items",
+        JSON.stringify(this.tasks)
+      );
+    },
+
+    /* returnerer "todo-lidt-items" fra localStorage fra string til til parse */
+    returnTasksLocally() {
+      return JSON.parse(window.localStorage.getItem("todo-list-items"));
     },
   },
 };
@@ -83,21 +148,71 @@ export default {
 
 <style>
 .todo-list {
-  display: flex;
-  flex-direction: column;
+  /* 
+			variabler fra figma 
+		*/
+
+  --background: #f0ebad;
+  --foreground: #000000;
+  --inactive: #b0b0b0;
+  --highlight: #ff2e00;
+  --border-radius: 0.5em;
+
+  position: relative;
   width: 40vw;
-  height: 80vw;
-  padding: 1em;
+  height: 80vh;
   background: palegoldenrod;
+  padding: 1em;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .todo-list__header {
-  background: violet;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-.todo-list__header__text {
-  pointer-events: none;
+.todo-list__title {
+  font-size: 0.7em;
+}
+
+.todo-list__add-new {
+  --size: 1em;
+
+  min-width: var(--size);
+  min-height: var(--size);
+  width: var(--size);
+  height: var(--size);
+}
+
+.todo-list__add-new line {
+  stroke: black;
+}
+
+.todo-list__add-new:hover line {
+  stroke: red;
+}
+
+.todo-list__separator {
+  border: 1px solid rgb(87, 68, 39);
+  margin: 1em 0;
+  opacity: 0.5;
+}
+
+.todo-list__content {
+  overflow: scroll;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 2;
+  color: palegreen;
+  z-index: 0;
 }
 </style>
+
+
+
+
