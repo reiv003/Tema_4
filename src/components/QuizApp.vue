@@ -2,26 +2,69 @@
   <body class="quiz-body">
     <div class="quiz-body__title">Kjemisk quiz</div>
     <div class="quiz-body__box">
-      <div class="box__question">
-        <p>{{ questions[0]["question"] }}</p>
+      <div v-if="index < count">
+        <p class="quiz-body__question">{{ questions[index]["question"] }}</p>
         <label
           :for="key"
-          class="box__question__option"
-          v-for="(alternative, key) in questions[0]['alternatives']"
+          class="quiz-body__alternatives"
+          v-for="(alternative, key) in questions[index]['alternatives']"
+          :class="
+            ({ selector: selectedAlternative == '' },
+            {
+              selector_wrong: selectedAlternative == key,
+            },
+            {
+              selector_correct:
+                key == questions[index]['correctAlternative'] &&
+                selectedAlternative != '',
+            })
+          "
         >
           <!--  @change -> når man trykker på et av alternativene skal answered methoden skje
                 :disabled -> gjør at man bare kan velge et av alternativene -->
           <input
-            class="option-hidden"
+            class="hide-radio"
             type="radio"
             :id="key"
             :value="key"
             @change="answered($event)"
             :disabled="selectedAlternative != ''"
-            :class="{ kanin: selectedAlternative == '' }"
           />
           {{ alternative }}
         </label>
+
+        <div>
+          <button
+            v-show="selectedAlternative != '' && index < count - 1"
+            @click="nextQuestion"
+            class="quiz-body__button"
+          >
+            Neste &gt;
+          </button>
+          <button
+            v-show="selectedAlternative != '' && index == count - 1"
+            @click="showResult"
+            class="quiz-body__button"
+          >
+            Avslutt
+          </button>
+        </div>
+      </div>
+      <div v-else>
+        <h2 class="quiz-body__result">Resultat</h2>
+        <div>
+          <p>
+            Riktige svar:
+            <span class="quiz-body__correct-scores">{{ correctScores }}</span>
+          </p>
+          <p>
+            Gale svar:
+            <span class="quiz-body__wrong-scores">{{ wrongScores }}</span>
+          </p>
+        </div>
+        <button @click="resetQuiz" class="quiz-body__reset-button">
+          Spill igjen
+        </button>
       </div>
     </div>
   </body>
@@ -31,31 +74,63 @@
 export default {
   data() {
     return {
+      index: 0,
       selectedAlternative: "",
+      correctScores: 0,
+      wrongScores: 0,
+      count: 3,
       questions: [
         {
-          question: "Hvem er lederen av EXO?",
-          alternatives: { a: "Onew", b: "Suho", c: "Xiumin", d: "Taeyong" },
+          question:
+            "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
+          alternatives: { a: "Klor", b: "Oksygen", c: "Hydrogen", d: "Litium" },
           correctAlternative: "b",
         },
         {
-          question: "Hvem er SHINees maknae?",
-          alternatives: { a: "Taemin", b: "Onew", c: "Yang Yang", d: "Sehun" },
+          question: "Hvor mange 'perioder' består det periodiske system av?",
+          alternatives: { a: "7", b: "4", c: "11", d: "9" },
           correctAlternative: "a",
         },
         {
-          question: "Hvem er Guros favoritt gruppe?",
-          alternatives: { a: "SHINee", b: "NCT", c: "EXO", d: "Wayv" },
+          question: "Hva er det vanligste grunnstoffet i universet?",
+          alternatives: {
+            a: "Oksygen",
+            b: "Neon",
+            c: "Hydrogen",
+            d: "Natrium",
+          },
           correctAlternative: "c",
         },
       ],
     };
   },
+
   methods: {
     // når man trykker på et alternativ console logger den om man trykker på a,b,c eller d
     answered(e) {
       this.selectedAlternative = e.target.value;
-      console.log(this.selectedAlternative);
+      if (
+        this.selectedAlternative ==
+        this.questions[this.index]["correctAlternative"]
+      )
+        this.correctScores++;
+      else this.wrongScores++;
+    },
+
+    nextQuestion() {
+      this.index++;
+      this.selectedAlternative = "";
+    },
+
+    showResult() {
+      this.index++;
+    },
+
+    resetQuiz() {
+      this.index = 0;
+      this.selectedAlternative = "";
+      this.correctScores = 0;
+      this.wrongScores = 0;
     },
   },
 };
@@ -65,22 +140,30 @@ export default {
 .quiz-body {
   display: flex;
   flex-direction: column;
-  background: burlywood;
-  padding-left: 2em;
+  align-items: center;
 }
 
 .quiz-body__title {
-  width: 50vw;
-  background: pink;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  padding: 1em;
 }
 
 .quiz-body__box {
-  width: 50vw;
-  height: 50vh;
-  background: aquamarine;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 70vh;
+  background: paleturquoise;
+  padding: 1em;
 }
 
-.box__question__option {
+.quiz-body__question {
+  margin-bottom: 1em;
+}
+
+.quiz-body__alternatives {
   display: block;
   background: white;
   margin: 0.5em;
@@ -88,11 +171,47 @@ export default {
   padding: 0.06em;
 }
 
-.option-hidden {
+.hide-radio {
   visibility: hidden;
 }
 
-.kanin {
+.selector:hover {
   background: grey;
+}
+
+.selector_wrong {
+  background: palevioletred;
+}
+
+.selector_correct {
+  background: palegreen;
+}
+
+.quiz-body__button {
+  background: plum;
+  float: right;
+  border-radius: 20px;
+  padding: 0.2em;
+}
+
+.quiz-body__result {
+  margin-bottom: 1em;
+}
+
+.quiz-body__correct-scores {
+  color: green;
+  display: inline;
+}
+
+.quiz-body__wrong-scores {
+  color: red;
+  display: inline;
+}
+
+.quiz-body__reset-button {
+  background: orange;
+  border-radius: 20px;
+  padding: 0.2em;
+  margin-top: 1em;
 }
 </style>
