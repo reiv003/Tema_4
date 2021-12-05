@@ -4,8 +4,23 @@ body {
 	font-size: 40px;
 	min-height: 100vh;
 	margin: 0;
+	font-family: BarlowSemiCondensed;
 }
 
 h1 {
 	font-size: 1.5em;
+}
+
+h1,h2,h3 {
+	font-family: Stoke;
+}
+
+@font-face {
+	font-family: Stoke;
+	src: url(/assets/fonts/Stoke/Stoke-Regular.ttf);
+}
+
+@font-face {
+	font-family: BarlowSemiCondensed;
+	src: url(/assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Regular.ttf);
 }
