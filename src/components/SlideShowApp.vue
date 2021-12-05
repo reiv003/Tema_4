@@ -1,26 +1,33 @@
 <template>
   <div class="container">
-    <h2>Slideshow</h2>
-
-    <!-- <div class="slideshow__images"> -->
-    <!-- <img :src="`../assets/${images[i].image}`" /> -->
-    <div
-      class="images"
-      v-for="image in images"
-      :class="{ notVisible: !image.isVisible, visible: image.isVisible }"
-    >
-      <img :src="`../assets/${image.image}`" />
-      <!-- <div class="caption">
-        {{ image.caption }}
-      </div> -->
+    <h2>Mine bilder</h2>
+    <div class="image_buttons">
+      <button @click="previousImage">Forrige</button>
+      <button @click="nextImage">Neste</button>
     </div>
-  </div>
-  <div>
-    <button @click="display_image(0)">1</button>
-    <button @click="display_image(1)">2</button>
-    <button @click="display_image(2)">3</button>
-    <button @click="display_image(3)">4</button>
-    <button @click="display_image(4)">5</button>
+
+    <div class="images">
+      <figure>
+        <img
+          class="image"
+          :src="currentImage.imagePath"
+          :alt="currentImage.caption"
+        />
+        <figcaption class="image__caption">
+          {{ currentImage.caption }}
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="image_nav">
+      <button
+        @click="goToIndex(index)"
+        v-for="(image, index) in images"
+        :aria-label="`Gå til bilde ${index + 1}`"
+      >
+        -
+      </button>
+    </div>
   </div>
 </template>
 
@@ -29,70 +36,54 @@
   export default {
     data() {
       return {
+        index: 0,
         images: [
           {
-            Id: 1,
             name: "Autosampler",
-            image: "autosampler.jpg",
+            imagePath: "../assets/autosampler.jpg",
             caption: "NMR autosampler for academic research.",
-            isVisible: "none",
           },
           {
-            Id: 2,
             name: "Chemicals",
-            image: "chemicals.jpg",
+            imagePath: "../assets/chemicals.jpg",
             caption: "Flasker med forskjellige løsninger",
-            isVisible: "none",
           },
           {
-            Id: 3,
             name: "Glass sketch",
-            image: "glass_sketch.jpg",
+            imagePath: "../assets/glass_sketch.jpg",
             caption: "Work up of a reaction sketched on fume hood sash glass",
-            isVisible: "none",
           },
           {
-            Id: 4,
             name: "Plants beaker",
-            image: "plants_beakers.jpg",
+            imagePath: "../assets/plants_beakers.jpg",
             caption: "Plants in beakers",
-            isVisible: "none",
           },
           {
-            Id: 5,
             name: "Reaction",
-            image: "reaction.jpg",
+            imagePath: "../assets/reaction.jpg",
             caption: "Reaction is stirred and heated with an oil bath.",
-            isVisible: "none",
           },
         ],
       };
     },
 
-    // computed: {
-    //   display_image: function () {
-    //     let x = 0;
-    //     ++x;
-    //     console.log(x);
-    //     return x;
-    //   },
-
-    //   currentImage: 0,
+    computed: {
+      currentImage() {
+        return this.images[this.index];
+      },
+    },
 
     methods: {
-      display_image(n) {
-        // for (let i = 0; i < images.length; i++) {
-        //   currentImage = this.images[i];
-        // }
+      previousImage() {
+        this.index = this.index === 0 ? this.images.length - 1 : this.index - 1;
+      },
 
-        // console.log(this.images[n].name);
-        // let currentImage = this.images[0].Id;
-        // ++this.currentImage;
-        // this.images[n].isVisible = "block";
-        console.log(this.images[n].image);
-        // return this.images[n].isVisible;
+      nextImage() {
+        this.index = this.index === this.images.length - 1 ? 0 : this.index + 1;
+      },
 
-        // this.images[n].isVisible = !this.images[n].isVisible;
+      goToIndex(index) {
+        this.index = index;
       },
     },
   };
@@ -100,14 +91,64 @@
 
 <style>
   .container {
-    width: 70vw;
+    position: relative;
+    width: 80vw;
+    height: 80vh;
     background: palegreen;
     margin: auto;
   }
 
-  .images img {
-    width: 40rem;
-    margin-left: 20rem;
+  .image_nav {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+    width: 100%;
+  }
+
+  .image_nav button {
+    background-color: aquamarine;
+    border: rgb(65, 202, 161) 2px solid;
+    padding: 0.3em;
+    margin: 10px;
+  }
+
+  .image_nav button:hover {
+    background: cadetblue;
+  }
+
+  .image_buttons {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .image_buttons button {
+    padding: 0.5em;
+    color: blue;
+  }
+
+  .images {
+    position: absolute;
+    top: 50;
+    width: 100%;
+    height: 80%;
+  }
+  .images .image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .image__caption {
+    transform: translateY(1250%);
   }
 
   .visible {
