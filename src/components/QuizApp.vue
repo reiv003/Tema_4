@@ -1,3 +1,6 @@
+<!-- Noen ganger vet ikke hva som triggrer det, men på siste spørsmål
+ får man ikke lov til å trykke på det riktige alternativet -->
+
 <template>
   <body class="quiz-body">
     <div class="quiz-body__title">Kjemisk quiz</div>
