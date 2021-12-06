@@ -1,10 +1,7 @@
-<!-- Noen ganger vet ikke hva som triggrer det, men på siste spørsmål
- får man ikke lov til å trykke på det riktige alternativet -->
-
 <template>
   <body class="quiz-body">
-    <div class="quiz-body__title">Kjemisk quiz</div>
     <div class="quiz-body__box">
+      <!-- spørsmålene vises når indxen til quizen er mindre en count(lengden på quizzen -> 3) -->
       <div v-if="index < count">
         <p class="quiz-body__question">{{ questions[index]["question"] }}</p>
         <label
@@ -23,19 +20,22 @@
             })
           "
         >
-          <!--  @change -> når man trykker på et av alternativene skal answered methoden skje
-                :disabled -> gjør at man bare kan velge et av alternativene -->
+          <!--  @click -> når man trykker på et av alternativene skal 'answered methoden' skje
+                :disabled -> gjør at man bare kan velge bare et av alternativene -->
           <input
             class="hide-radio"
             type="radio"
             :id="key"
             :value="key"
-            @change="answered($event)"
+            @click="answered($event)"
             :disabled="selectedAlternative != ''"
           />
           {{ alternative }}
         </label>
 
+        <!-- Neste knappen vises bare når selectedAlternative har trykket på en knapp
+             og index (0,1,2) er mindre en count(3) - 1 = 2
+             Dette skjer bare på spørsmål 1 og 2 (når indexen er = 0,1) -->
         <div>
           <button
             v-show="selectedAlternative != '' && index < count - 1"
@@ -44,6 +44,10 @@
           >
             Neste &gt;
           </button>
+
+          <!-- Avslutt knappen vises bare når selectedAlternative har trykket på en knapp 
+               og index er lik count(3) - 1 = 2 
+               Dette skjer bare på spørsmål 3 (når indexen er 2) -->
           <button
             v-show="selectedAlternative != '' && index == count - 1"
             @click="showResult"
@@ -53,6 +57,8 @@
           </button>
         </div>
       </div>
+
+      <!-- Resultat siden viser når indexen til quizzen er større en lengden på quizzen (count -> 3) -->
       <div v-else>
         <h2 class="quiz-body__result">Resultat</h2>
         <div>
@@ -109,7 +115,13 @@ export default {
   },
 
   methods: {
-    // når man trykker på et alternativ console logger den om man trykker på a,b,c eller d
+    /* når man trykker på et alternativ finner den keyen til hvilken man trykker på a,b,c,d
+       
+       kalkulerer scoren:
+       hvis man trykker på riktig knapp går 'correctAlternative' ++
+       hvis man trykker på feil knapp går 'wrongScores' ++
+    */
+
     answered(e) {
       this.selectedAlternative = e.target.value;
       if (
@@ -144,6 +156,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 70%;
 }
 
 .quiz-body__title {
@@ -156,7 +169,7 @@ export default {
 .quiz-body__box {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 80%;
   height: 70vh;
   background: paleturquoise;
   padding: 1em;
