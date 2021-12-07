@@ -6,8 +6,8 @@
 
 button {
 	cursor: pointer;
-	/*background: none;
-	border: none;*/
+	background: none;
+	border: none;
 	font: inherit;
 }
 

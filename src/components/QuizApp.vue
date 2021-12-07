@@ -159,24 +159,18 @@ export default {
   font-size: 70%;
 }
 
-.quiz-body__title {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  padding: 1em;
-}
-
 .quiz-body__box {
   display: flex;
   justify-content: center;
-  width: 80%;
-  height: 70vh;
+  width: 50%;
+  height: 60vh;
   background: paleturquoise;
   padding: 1em;
 }
 
 .quiz-body__question {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+  margin-top: 1em;
 }
 
 .quiz-body__alternatives {
@@ -228,6 +222,7 @@ export default {
   background: orange;
   border-radius: 20px;
   padding: 0.2em;
-  margin-top: 1em;
+  margin-top: 2em;
+  margin-left: 10vw;
 }
 </style>
