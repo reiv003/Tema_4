@@ -3,4 +3,14 @@
 	--padding: 0.5em;
 	--margin: 0.5em;
 	--header-footer-bg-color: rgb(101, 150, 127);
+
+	--component-blue: #B0CDEB;
+	--component-orange: #FAB8A0;
+	--component-yellow: #F1E2AD;
+	--component-pink: #E39ABC;
+	--component-green: #BCD7A7;
+
+	--header-background: #9D92A0;
+	--body-background: #6F6572;
+	--footer-background: #504754;
 }

@@ -23,27 +23,27 @@
 </template>
 
 <script>
-  export default {};
+export default {};
 </script>
 
 <style>
-  header {
-    font-size: 0.7em;
-    display: flex;
-    background-color: var(--header-footer-bg-color);
-  }
+header {
+  font-size: 0.7em;
+  display: flex;
+  background-color: var(--header-background);
+}
 
-  .item {
-    padding: var(--padding);
-    margin: var(--margin);
-  }
+.item {
+  padding: var(--padding);
+  margin: var(--margin);
+}
 
-  .item a {
-    text-decoration: none;
-    color: white;
-  }
+.item a {
+  text-decoration: none;
+  color: white;
+}
 
-  .item a:hover {
-    background: cadetblue;
-  }
+.item a:hover {
+  background: var(--footer-background);
+}
 </style>

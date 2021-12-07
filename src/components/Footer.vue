@@ -5,16 +5,16 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {};
-    },
-  };
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style>
-  footer {
-    background-color: var(--header-footer-bg-color);
-    height: 2em;
-  }
+footer {
+  background-color: var(--footer-background);
+  height: 2em;
+}
 </style>

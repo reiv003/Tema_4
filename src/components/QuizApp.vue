@@ -164,8 +164,9 @@ export default {
   justify-content: center;
   width: 50%;
   height: 60vh;
-  background: paleturquoise;
   padding: 1em;
+  margin-top: 2em;
+  background: var(--component-blue);
 }
 
 .quiz-body__question {
@@ -186,22 +187,23 @@ export default {
 }
 
 .selector:hover {
-  background: grey;
+  background: #ccc;
 }
 
 .selector_wrong {
-  background: palevioletred;
+  background: var(--component-pink);
 }
 
 .selector_correct {
-  background: palegreen;
+  background: var(--component-green);
 }
 
 .quiz-body__button {
-  background: plum;
+  background: var(--component-pink);
   float: right;
   border-radius: 20px;
-  padding: 0.2em;
+  padding: 0.4em;
+  margin-top: 0.6em;
 }
 
 .quiz-body__result {
@@ -219,9 +221,9 @@ export default {
 }
 
 .quiz-body__reset-button {
-  background: orange;
+  background: var(--component-pink);
   border-radius: 20px;
-  padding: 0.2em;
+  padding: 0.6em;
   margin-top: 2em;
   margin-left: 10vw;
 }

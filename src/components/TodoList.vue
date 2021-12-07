@@ -182,12 +182,13 @@ export default {
 }
 
 .header__submit {
-  background: rgb(111, 178, 180);
+  background: var(--component-green);
   padding: 0.2em;
 }
 
 .todo-box__table-th {
   padding: 0.2em;
+  background: var(--component-orange);
 }
 
 .todo-box__table-td {
@@ -196,22 +197,19 @@ export default {
 }
 
 .todo-box__table {
-  background: palegoldenrod;
+  background: var(--component-yellow);
 }
 
 .table__task {
   width: 30vw;
-  background: goldenrod;
 }
 
 .table__status {
   width: 15vw;
-  background: goldenrod;
 }
 
 .table__svg {
   width: 8vw;
-  background: goldenrod;
 }
 
 /* :class */
