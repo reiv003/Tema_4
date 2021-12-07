@@ -1,6 +1,7 @@
 <template>
   <header>
-    <h1>Studerings-app</h1>
+    <div><img src="/assets/logo.svg" /></div>
+    <h1>S-app</h1>
     <div class="item">
       <RouterLink :to="{ name: 'time_table' }">Timeplan</RouterLink>
     </div>
@@ -23,27 +24,27 @@
 </template>
 
 <script>
-export default {};
+  export default {};
 </script>
 
 <style>
-header {
-  font-size: 0.7em;
-  display: flex;
-  background-color: var(--header-background);
-}
+  header {
+    font-size: 0.7em;
+    display: flex;
+    background-color: var(--header-background);
+  }
 
-.item {
-  padding: var(--padding);
-  margin: var(--margin);
-}
+  .item {
+    padding: var(--padding);
+    margin: var(--margin);
+  }
 
-.item a {
-  text-decoration: none;
-  color: white;
-}
+  .item a {
+    text-decoration: none;
+    color: white;
+  }
 
-.item a:hover {
-  background: var(--footer-background);
-}
+  .item a:hover {
+    background: var(--footer-background);
+  }
 </style>

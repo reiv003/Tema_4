@@ -1,14 +1,16 @@
 body {
 	display: grid;
-	background-color: aliceblue;
+	grid-template-rows: min-content auto min-content;
+	background-color: var(--body-background);
 	font-size: 40px;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	margin: 0;
 	font-family: BarlowSemiCondensed;
 }
 
 h1 {
 	font-size: 1.5em;
+	color: white;
 }
 
 h1,h2,h3 {
@@ -24,3 +26,4 @@ h1,h2,h3 {
 	font-family: BarlowSemiCondensed;
 	src: url(/assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Regular.ttf);
 }
+

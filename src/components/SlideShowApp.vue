@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="slideshow-container">
     <h2>Mine bilder</h2>
     <div class="image_buttons">
       <button @click="previousImage">Forrige</button>
@@ -90,11 +90,11 @@
 </script>
 
 <style>
-  .container {
+  .slideshow-container {
     position: relative;
     width: 80vw;
     height: 80vh;
-    background: palegreen;
+    background: rgb(88, 134, 88);
     margin: auto;
   }
 
