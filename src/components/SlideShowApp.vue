@@ -94,7 +94,7 @@
     position: relative;
     width: 80vw;
     height: 80vh;
-    background: rgb(88, 134, 88);
+    background: var(--component-orange);
     margin: auto;
   }
 
