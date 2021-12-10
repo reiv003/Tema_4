@@ -11,4 +11,9 @@
 	--header-background: #9D92A0;
 	--body-background: #6F6572;
 	--footer-background: #504754;
+
+	--score-wrong: 	#ce5757;
+	--score-correct: #59b459;
+	--score-between: #dfbb1b;
+
 }

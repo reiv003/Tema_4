@@ -1,6 +1,6 @@
 <template>
-  <body class="quiz-body">
-    <div class="quiz-body__box">
+  <body class="quiz">
+    <div class="quiz-body">
       <!-- spørsmålene vises når indxen til quizen er mindre en count(lengden på quizzen -> 3) -->
       <div v-if="index < count">
         <p class="quiz-body__question">{{ questions[index]["question"] }}</p>
@@ -8,22 +8,18 @@
           :for="key"
           class="quiz-body__alternatives"
           v-for="(alternative, key) in questions[index]['alternatives']"
-          :class="
-            ({ selector: selectedAlternative === '' },
-            {
-              selector_wrong: selectedAlternative === key,
-            },
-            {
-              selector_correct:
-                key === questions[index]['correctAlternative'] &&
-                selectedAlternative != '',
-            })
-          "
+          :class="{
+            selector: selectedAlternative === '',
+            selectorWrong: selectedAlternative === key,
+            selectorCorrect:
+              key === questions[index]['correctAlternative'] &&
+              selectedAlternative != '',
+          }"
         >
           <!--  @click -> når man trykker på et av alternativene skal 'answered methoden' skje
                 :disabled -> gjør at man bare kan velge bare et av alternativene -->
           <input
-            class="hide-radio"
+            class="quiz-body__radio"
             type="radio"
             :id="key"
             :value="key"
@@ -61,17 +57,17 @@
       <!-- Resultat siden viser når indexen til quizzen er større en lengden på quizzen (count -> 3) -->
       <div v-else>
         <h2 class="quiz-body__result">Resultat</h2>
-        <div>
+        <div class="result__scores">
           <p>
             Riktige svar:
-            <span class="quiz-body__correct-scores">{{ correctScores }}</span>
+            <span class="result__scores__correct">{{ correctScores }}</span>
           </p>
           <p>
             Gale svar:
-            <span class="quiz-body__wrong-scores">{{ wrongScores }}</span>
+            <span class="result__scores__wrong">{{ wrongScores }}</span>
           </p>
         </div>
-        <button @click="resetQuiz" class="quiz-body__reset-button">
+        <button @click="resetQuiz" class="result__reset-button">
           Spill igjen
         </button>
       </div>
@@ -87,7 +83,7 @@ export default {
       selectedAlternative: "",
       correctScores: 0,
       wrongScores: 0,
-      count: 3,
+      count: 5,
       questions: [
         {
           question:
@@ -99,6 +95,36 @@ export default {
           question: "Hvor mange 'perioder' består det periodiske system av?",
           alternatives: { a: "7", b: "4", c: "11", d: "9" },
           correctAlternative: "a",
+        },
+        {
+          question: "Hva er det vanligste grunnstoffet i universet?",
+          alternatives: {
+            a: "Oksygen",
+            b: "Neon",
+            c: "Hydrogen",
+            d: "Natrium",
+          },
+          correctAlternative: "c",
+        },
+        {
+          question: "Hva er det vanligste grunnstoffet i universet?",
+          alternatives: {
+            a: "Oksygen",
+            b: "Neon",
+            c: "Hydrogen",
+            d: "Natrium",
+          },
+          correctAlternative: "c",
+        },
+        {
+          question: "Hva er det vanligste grunnstoffet i universet?",
+          alternatives: {
+            a: "Oksygen",
+            b: "Neon",
+            c: "Hydrogen",
+            d: "Natrium",
+          },
+          correctAlternative: "c",
         },
         {
           question: "Hva er det vanligste grunnstoffet i universet?",
@@ -154,80 +180,86 @@ export default {
 </script>
 
 <style>
-.quiz-body {
+.quiz {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 70%;
 }
 
-.quiz-body__box {
+.quiz-body {
   display: flex;
   justify-content: center;
   width: 50%;
   height: 55vh;
   padding: 1em;
-
   background: var(--component-blue);
 }
 
 .quiz-body__question {
-  margin-bottom: 2em;
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 .quiz-body__alternatives {
   display: block;
-  background: white;
-  margin: 0.5em;
-  border-radius: 20px;
   padding: 0.06em;
+  border-radius: 20px;
+  margin: 0.5em;
+  background: white;
 }
 
-.hide-radio {
+.quiz-body__radio {
   visibility: hidden;
 }
 
+.quiz-body__button {
+  float: right;
+  padding: 0.4em;
+  border-radius: 20px;
+  margin-top: 0.6em;
+  background: var(--component-pink);
+}
+
+.quiz-body__result {
+  padding-top: 1em;
+  padding-left: 1vw;
+}
+
+.result__scores {
+  padding-left: 1vw;
+}
+
+.result__scores__correct {
+  display: inline;
+  font-size: 150%;
+  color: var(--score-correct);
+}
+
+.result__scores__wrong {
+  display: inline;
+  font-size: 150%;
+  color: var(--score-wrong);
+}
+
+.result__reset-button {
+  padding: 0.6em;
+  border-radius: 20px;
+  margin-top: 2em;
+  margin-left: 3vw;
+  background: var(--component-pink);
+}
+
+/********** :class **********/
 .selector:hover {
   background: #ccc;
 }
 
-.selector_wrong {
-  background: var(--component-pink);
+.selectorWrong {
+  background: var(--score-wrong);
 }
 
-.selector_correct {
-  background: var(--component-green);
-}
-
-.quiz-body__button {
-  background: var(--component-pink);
-  float: right;
-  border-radius: 20px;
-  padding: 0.4em;
-  margin-top: 0.6em;
-}
-
-.quiz-body__result {
-  margin-bottom: 1em;
-  padding: 1em;
-}
-
-.quiz-body__correct-scores {
-  color: green;
-  display: inline;
-}
-
-.quiz-body__wrong-scores {
-  color: red;
-  display: inline;
-}
-
-.quiz-body__reset-button {
-  background: var(--component-pink);
-  border-radius: 20px;
-  padding: 0.6em;
-  margin-top: 2em;
-  margin-left: 10vw;
+.selectorCorrect {
+  background: var(--score-correct);
 }
 </style>
