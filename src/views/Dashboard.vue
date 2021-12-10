@@ -61,7 +61,7 @@ export default {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 5;
-  background: var(--component-blue);
+  background: var(--component-yellow);
 }
 
 .dash-quiz {
@@ -69,7 +69,7 @@ export default {
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 3;
-  background: var(--component-yellow);
+  background: var(--component-blue);
 }
 
 .dash-quiz .quiz-body__box {

@@ -195,7 +195,7 @@ export default {
 
 .todo-box__table-th {
   padding: 0.2em;
-  background: var(--component-orange);
+  background: var(--component-yellow);
 }
 
 .todo-box__table-td {
@@ -204,7 +204,7 @@ export default {
 }
 
 .todo-box__table {
-  background: var(--component-yellow);
+  background: white;
 }
 
 .table__task {
@@ -225,14 +225,14 @@ export default {
 }
 
 .red {
-  color: red;
+  color: var(--score-wrong);
 }
 
 .yellow {
-  color: orange;
+  color: var(--score-between);
 }
 
 .green {
-  color: green;
+  color: var(--score-correct);
 }
 </style>
