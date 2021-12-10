@@ -116,12 +116,18 @@ export default {
   },
 
   methods: {
+    /* If the submit button has been clicked, but a task has not been written return nothing.
+       If the edit button has been clicked, a task with a name (the task) and the status 'må gjøre' will be pushed.
+       The task name will be placed in to the input, add or take away letters, then when the sumbit button is clicked the new uptated task will be pushed.
+    */
     /* Hvis submit knappen blir trykket, men det er ikke skrevt noe tekst return ingenting
        Hvis edit knappen ikke har blitt trykket pushes en task med et navn og status 'må gjøre'
        Navnet til editedTask blir putta inn i input, og redigert på og pusha som en oppdatert task  
        Gjør at inputen blir tom etter slik at man slipper å slette den forrige tasken for så å sikrive den nye */
     submitTask() {
-      if (this.task.length === 0) return;
+      if (this.task.length === 0) {
+        return;
+      }
 
       if (this.editedTask === null) {
         this.tasks.push({
@@ -150,11 +156,12 @@ export default {
 
     /* Finner indexen til current status inni availebleStatuses
        Når newIndex er større en 2 som er mer lengden på arrayet, start på nytt på 0
-       Bytter oppgave statusen med å bruke newIndex
-    */
+       Bytter oppgave statusen med å bruke newIndex */
     changeStatus(index) {
       let newIndex = this.availableStatuses.indexOf(this.tasks[index].status);
-      if (++newIndex > 2) newIndex = 0;
+      if (++newIndex > 2) {
+        newIndex = 0;
+      }
       this.tasks[index].status = this.availableStatuses[newIndex];
     },
   },
@@ -167,14 +174,14 @@ export default {
   flex-direction: column;
   width: 80vw;
   height: 20vw;
-  margin-left: 10vw;
   margin-bottom: 23vw;
+  margin-left: 10%;
 }
 
 .todo-box__header {
   margin-bottom: 1em;
   margin-top: 1em;
-  margin-left: 23vw;
+  margin-left: 30%;
 }
 
 .header__input {

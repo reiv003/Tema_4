@@ -49,7 +49,7 @@
                og index er lik count(3) - 1 = 2 
                Dette skjer bare på spørsmål 3 (når indexen er 2) -->
           <button
-            v-show="selectedAlternative != '' && index == count - 1"
+            v-show="selectedAlternative != '' && index === count - 1"
             @click="showResult"
             class="quiz-body__button"
           >
@@ -80,151 +80,154 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        index: 0,
-        selectedAlternative: "",
-        correctScores: 0,
-        wrongScores: 0,
-        count: 3,
-        questions: [
-          {
-            question:
-              "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
-            alternatives: { a: "Klor", b: "Oksygen", c: "Hydrogen", d: "Litium" },
-            correctAlternative: "b",
+export default {
+  data() {
+    return {
+      index: 0,
+      selectedAlternative: "",
+      correctScores: 0,
+      wrongScores: 0,
+      count: 3,
+      questions: [
+        {
+          question:
+            "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
+          alternatives: { a: "Klor", b: "Oksygen", c: "Hydrogen", d: "Litium" },
+          correctAlternative: "b",
+        },
+        {
+          question: "Hvor mange 'perioder' består det periodiske system av?",
+          alternatives: { a: "7", b: "4", c: "11", d: "9" },
+          correctAlternative: "a",
+        },
+        {
+          question: "Hva er det vanligste grunnstoffet i universet?",
+          alternatives: {
+            a: "Oksygen",
+            b: "Neon",
+            c: "Hydrogen",
+            d: "Natrium",
           },
-          {
-            question: "Hvor mange 'perioder' består det periodiske system av?",
-            alternatives: { a: "7", b: "4", c: "11", d: "9" },
-            correctAlternative: "a",
-          },
-          {
-            question: "Hva er det vanligste grunnstoffet i universet?",
-            alternatives: {
-              a: "Oksygen",
-              b: "Neon",
-              c: "Hydrogen",
-              d: "Natrium",
-            },
-            correctAlternative: "c",
-          },
-        ],
-      };
-    },
+          correctAlternative: "c",
+        },
+      ],
+    };
+  },
 
-    methods: {
-      /* når man trykker på et alternativ finner den keyen til hvilken man trykker på a,b,c,d
+  methods: {
+    /* når man trykker på et alternativ finner den keyen til hvilken man trykker på a,b,c eller d
          
          kalkulerer scoren:
          hvis man trykker på riktig knapp går 'correctAlternative' ++
          hvis man trykker på feil knapp går 'wrongScores' ++
       */
 
-      answered(e) {
-        this.selectedAlternative = e.target.value;
-        if (
-          this.selectedAlternative ==
-          this.questions[this.index]["correctAlternative"]
-        )
-          this.correctScores++;
-        else this.wrongScores++;
-      },
-
-      nextQuestion() {
-        this.index++;
-        this.selectedAlternative = "";
-      },
-
-      showResult() {
-        this.index++;
-      },
-
-      resetQuiz() {
-        this.index = 0;
-        this.selectedAlternative = "";
-        this.correctScores = 0;
-        this.wrongScores = 0;
-      },
+    answered(key) {
+      this.selectedAlternative = key.target.value;
+      if (
+        this.selectedAlternative ===
+        this.questions[this.index]["correctAlternative"]
+      ) {
+        this.correctScores++;
+      } else {
+        this.wrongScores++;
+      }
     },
-  };
+
+    nextQuestion() {
+      this.index++;
+      this.selectedAlternative = "";
+    },
+
+    showResult() {
+      this.index++;
+    },
+
+    resetQuiz() {
+      this.index = 0;
+      this.selectedAlternative = "";
+      this.correctScores = 0;
+      this.wrongScores = 0;
+    },
+  },
+};
 </script>
 
 <style>
-  .quiz-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 70%;
-  }
+.quiz-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 70%;
+}
 
-  .quiz-body__box {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    height: 60vh;
-    padding: 1em;
-    margin-top: 2em;
-    background: var(--component-blue);
-  }
+.quiz-body__box {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 55vh;
+  padding: 1em;
 
-  .quiz-body__question {
-    margin-bottom: 2em;
-    margin-top: 1em;
-  }
+  background: var(--component-blue);
+}
 
-  .quiz-body__alternatives {
-    display: block;
-    background: white;
-    margin: 0.5em;
-    border-radius: 20px;
-    padding: 0.06em;
-  }
+.quiz-body__question {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
 
-  .hide-radio {
-    visibility: hidden;
-  }
+.quiz-body__alternatives {
+  display: block;
+  background: white;
+  margin: 0.5em;
+  border-radius: 20px;
+  padding: 0.06em;
+}
 
-  .selector:hover {
-    background: #ccc;
-  }
+.hide-radio {
+  visibility: hidden;
+}
 
-  .selector_wrong {
-    background: var(--component-pink);
-  }
+.selector:hover {
+  background: #ccc;
+}
 
-  .selector_correct {
-    background: var(--component-green);
-  }
+.selector_wrong {
+  background: var(--component-pink);
+}
 
-  .quiz-body__button {
-    background: var(--component-pink);
-    float: right;
-    border-radius: 20px;
-    padding: 0.4em;
-    margin-top: 0.6em;
-  }
+.selector_correct {
+  background: var(--component-green);
+}
 
-  .quiz-body__result {
-    margin-bottom: 1em;
-  }
+.quiz-body__button {
+  background: var(--component-pink);
+  float: right;
+  border-radius: 20px;
+  padding: 0.4em;
+  margin-top: 0.6em;
+}
 
-  .quiz-body__correct-scores {
-    color: green;
-    display: inline;
-  }
+.quiz-body__result {
+  margin-bottom: 1em;
+  padding: 1em;
+}
 
-  .quiz-body__wrong-scores {
-    color: red;
-    display: inline;
-  }
+.quiz-body__correct-scores {
+  color: green;
+  display: inline;
+}
 
-  .quiz-body__reset-button {
-    background: var(--component-pink);
-    border-radius: 20px;
-    padding: 0.6em;
-    margin-top: 2em;
-    margin-left: 10vw;
-  }
+.quiz-body__wrong-scores {
+  color: red;
+  display: inline;
+}
+
+.quiz-body__reset-button {
+  background: var(--component-pink);
+  border-radius: 20px;
+  padding: 0.6em;
+  margin-top: 2em;
+  margin-left: 10vw;
+}
 </style>
