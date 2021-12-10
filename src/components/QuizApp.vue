@@ -107,14 +107,15 @@ export default {
           correctAlternative: "c",
         },
         {
-          question: "Hva er det vanligste grunnstoffet i universet?",
+          question:
+            "Hva het den russiske kjemikeren som regnes for å være 'periodesystemets' far?",
           alternatives: {
-            a: "Oksygen",
-            b: "Neon",
-            c: "Hydrogen",
-            d: "Natrium",
+            a: "Vladimir Periodnikov",
+            b: "Dmitrij Mendelejev",
+            c: "Sergei Pushkin ",
+            d: "Alexander Stolypin",
           },
-          correctAlternative: "c",
+          correctAlternative: "b",
         },
         {
           question: "Hva er det vanligste grunnstoffet i universet?",
