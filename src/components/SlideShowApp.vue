@@ -40,27 +40,27 @@
         images: [
           {
             name: "Autosampler",
-            imagePath: "../assets/autosampler.jpg",
+            imagePath: "../images/autosampler.jpg",
             caption: "NMR autosampler for academic research.",
           },
           {
             name: "Chemicals",
-            imagePath: "../assets/chemicals.jpg",
+            imagePath: "../images/chemicals.jpg",
             caption: "Flasker med forskjellige løsninger",
           },
           {
             name: "Glass sketch",
-            imagePath: "../assets/glass_sketch.jpg",
+            imagePath: "../images/glass_sketch.jpg",
             caption: "Work up of a reaction sketched on fume hood sash glass",
           },
           {
             name: "Plants beaker",
-            imagePath: "../assets/plants_beakers.jpg",
+            imagePath: "../images/plants_beakers.jpg",
             caption: "Plants in beakers",
           },
           {
             name: "Reaction",
-            imagePath: "../assets/reaction.jpg",
+            imagePath: "../images/reaction.jpg",
             caption: "Reaction is stirred and heated with an oil bath.",
           },
         ],

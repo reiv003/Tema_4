@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div><img src="/assets/logo.svg" /></div>
+    <div><img src="/images/logo.svg" /></div>
     <h1>S-app</h1>
     <div class="item">
       <RouterLink :to="{ name: 'time_table' }">Timeplan</RouterLink>
