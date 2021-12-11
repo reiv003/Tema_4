@@ -48,7 +48,7 @@ export default {
 
 .dashboard-components {
   margin-top: 0.2em;
-  max-width: 500px;
+  max-width: 750px;
   margin: 0.2em;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 0.4em;
