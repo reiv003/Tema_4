@@ -1,6 +1,6 @@
 <template>
-  <div class="todo-box">
-    <div class="todo-box__header">
+  <div class="todo">
+    <div class="todo__header">
       <input
         v-model="task"
         class="header__input"
@@ -9,22 +9,23 @@
       />
       <button @click="submitTask" class="header__submit">Send inn</button>
     </div>
-    <table class="todo-box__table">
+    <table class="todo__table">
       <thead>
-        <th class="todo-box__table-th table__task">Oppgave</th>
-        <th class="todo-box__table-th table__status">Status</th>
-        <th class="todo-box__table-th table__svg">Rediger</th>
-        <th class="todo-box__table-th table__svg">Slett</th>
+        <th class="todo__table-th table__task">Oppgave</th>
+        <th class="todo__table-th table__status">Status</th>
+        <th class="todo__table-th table__svg">Rediger</th>
+        <th class="todo__table-th table__svg">Slett</th>
       </thead>
+
       <tbody>
         <tr v-for="(task, index) in tasks" :key="index">
-          <td class="todo-box__table-td">
+          <td class="todo__table-td">
             <span :class="{ finished: task.status === 'Ferdig' }">{{
               task.name
             }}</span>
           </td>
-          <td class="todo-box__table-td">
-            <span
+          <td class="todo__table-td">
+            <button
               @click="changeStatus(index)"
               class="table-body__status"
               :class="{
@@ -32,65 +33,23 @@
                 yellow: task.status === 'Holder på',
                 green: task.status === 'Ferdig',
               }"
-              >{{ task.status }}</span
             >
+              {{ task.status }}
+            </button>
           </td>
-          <td class="todo-box__table-td">
-            <div @click="editTask(index)">
-              <span class="table-body__edit-svg"
-                ><svg
-                  width="33"
-                  height="35"
-                  viewBox="0 0 33 35"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.77983 23.2584L3.10522 29.4099L4.97745 31.4159L11.2628 28.6076"
-                    stroke="black"
-                  />
-                  <path
-                    d="M27.9763 10.6037L21.8731 4.81722L25.1869 1.23078L31.4227 7.14025L27.9763 10.6037Z"
-                    fill="black"
-                    stroke="black"
-                  />
-                  <path
-                    d="M11.0896 28.85L5.60287 23.3971L20.166 7.18634L26.1887 12.881L11.0896 28.85Z"
-                    fill="black"
-                    stroke="black"
-                  />
-                  <path
-                    d="M1 32.9949L3.10517 29.4424L4.9472 31.416L1.26315 33.3896L1 32.9949Z"
-                    fill="black"
-                    stroke="black"
-                  />
-                </svg>
+          <td class="todo__table-td">
+            <button @click="editTask(index)">
+              <span class="table-body__edit-svg">
+                <img src="/images/edit.svg" alt="" />
               </span>
-            </div>
+            </button>
           </td>
-          <td class="todo-box__table-td">
-            <div @click="deleteTask(index)">
-              <span class="table-delete-svg"
-                ><svg
-                  width="29"
-                  height="34"
-                  viewBox="0 0 29 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9.75659 4.36948V1H19.0972V4.36948M4.03784 9.4237V32.0911H24.6253V9.11738M8.80347 14.0184V28.8748M14.5222 15.2437V27.6495M20.241 13.559V28.8748"
-                    stroke="black"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M28 4.55792H1V9.41561H28V4.55792Z"
-                    stroke="black"
-                    stroke-width="2"
-                  />
-                </svg>
-              </span>
-            </div>
+          <td class="todo__table-td">
+            <button @click="deleteTask(index)">
+              <span class="table-delete-svg">
+                <img src="/images/trash.svg" alt=""
+              /></span>
+            </button>
           </td>
         </tr>
       </tbody>
@@ -116,10 +75,6 @@ export default {
   },
 
   methods: {
-    /* If the submit button has been clicked, but a task has not been written return nothing.
-       If the edit button has been clicked, a task with a name (the task) and the status 'må gjøre' will be pushed.
-       The task name will be placed in to the input, add or take away letters, then when the sumbit button is clicked the new uptated task will be pushed.
-    */
     /* Hvis submit knappen blir trykket, men det er ikke skrevt noe tekst return ingenting
        Hvis edit knappen ikke har blitt trykket pushes en task med et navn og status 'må gjøre'
        Navnet til editedTask blir putta inn i input, og redigert på og pusha som en oppdatert task  
@@ -169,54 +124,54 @@ export default {
 </script>
 
 <style>
-.todo-box {
+.todo {
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  height: 20vw;
-  margin-bottom: 23vw;
+  width: 80%;
   margin-left: 10%;
 }
 
-.todo-box__header {
+.todo__header {
   margin-bottom: 1em;
   margin-top: 1em;
-  margin-left: 30%;
 }
 
 .header__input {
-  padding: 0.1em;
+  padding: 0.2em;
+  width: 45%;
+  margin-left: 17%;
 }
 
 .header__submit {
   background: var(--component-green);
   padding: 0.2em;
+  width: 20%;
 }
 
-.todo-box__table-th {
+.todo__table-th {
   padding: 0.2em;
   background: var(--component-yellow);
 }
 
-.todo-box__table-td {
+.todo__table-td {
   padding: 0.2em;
   padding-left: 1.5em;
 }
 
-.todo-box__table {
+.todo__table {
   background: white;
 }
 
 .table__task {
-  width: 30vw;
+  width: 20%;
 }
 
 .table__status {
-  width: 15vw;
+  width: 20%;
 }
 
 .table__svg {
-  width: 8vw;
+  width: 8%;
 }
 
 /* :class */

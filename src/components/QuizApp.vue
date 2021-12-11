@@ -83,7 +83,7 @@ export default {
       selectedAlternative: "",
       correctScores: 0,
       wrongScores: 0,
-      count: 5,
+      count: 8,
       questions: [
         {
           question:
@@ -113,29 +113,46 @@ export default {
             a: "Vladimir Periodnikov",
             b: "Dmitrij Mendelejev",
             c: "Sergei Pushkin ",
-            d: "Alexander Stolypin",
           },
           correctAlternative: "b",
         },
         {
-          question: "Hva er det vanligste grunnstoffet i universet?",
+          question: "Hvilket grunnstoff har kjemisk symbol W?",
           alternatives: {
-            a: "Oksygen",
-            b: "Neon",
-            c: "Hydrogen",
-            d: "Natrium",
+            a: "Walteruim",
+            b: "Wallium",
+            c: "Wolfram",
+            d: "Willsonium",
           },
           correctAlternative: "c",
         },
         {
-          question: "Hva er det vanligste grunnstoffet i universet?",
+          question: "Hva kalles de vertikale kolonnene i periodesystemet?",
           alternatives: {
-            a: "Oksygen",
-            b: "Neon",
-            c: "Hydrogen",
-            d: "Natrium",
+            a: "Grupper",
+            b: "Kolonner",
+          },
+          correctAlternative: "a",
+        },
+        {
+          question: "Hva er det kjemiske symbolet for Kalsium?",
+          alternatives: {
+            a: "C",
+            b: "Ka",
+            c: "Ca",
+            d: "Cs",
           },
           correctAlternative: "c",
+        },
+        {
+          question: "Hvilken gass dannes dersom du blander eddik og natron??",
+          alternatives: {
+            a: "Karbondioksid",
+            b: "Neon",
+            c: "Wolfram",
+            d: "Gull",
+          },
+          correctAlternative: "a",
         },
       ],
     };
@@ -192,7 +209,6 @@ export default {
   display: flex;
   justify-content: center;
   width: 50%;
-  height: 55vh;
   padding: 1em;
   background: var(--component-blue);
 }
