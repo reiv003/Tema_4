@@ -1,13 +1,27 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-components dash-todo"><TodoList /></div>
-    <div class="dashboard-components dash-quiz"><QuizApp /></div>
-    <div class="dashboard-components dash-slide"><SlideShowApp /></div>
+    <div class="dashboard-components dash-todo">
+      <h2>To-do <img src="/images/side_arrow.svg" /></h2>
+      <TodoList />
+    </div>
+    <div class="dashboard-components dash-quiz">
+      <h2>Quiz <img src="/images/side_arrow.svg" /></h2>
+      <QuizApp />
+    </div>
+    <div class="dashboard-components dash-slide">
+      <h2>Mine bilder <img src="/images/side_arrow.svg" /></h2>
+      <SlideShowApp />
+    </div>
     <div class="dashboard-components dash-table">
+      <h2>Timeplan <img src="/images/side_arrow.svg" /></h2>
       <Table />
     </div>
     <div class="dashboard-components dash-contact">
-      <button @click="active = !active">Kontakt oss</button>
+      <button @click="active = !active">
+        <img src="/images/arrow_down.svg" />
+      </button>
+      <h2>Kontakt oss <img src="/images/side_arrow.svg" /></h2>
+
       <div v-if="active" class="contact__content"><ContactForm /></div>
     </div>
   </div>
@@ -15,101 +29,114 @@
 
 
 <script>
-import Table from "../components/Table.vue";
-import QuizApp from "../components/QuizApp.vue";
-import ContactForm from "../components/ContactForm.vue";
-import TodoList from "../components/TodoList.vue";
-import SlideShowApp from "../components/SlideShowApp.vue";
+  import Table from "../components/Table.vue";
+  import QuizApp from "../components/QuizApp.vue";
+  import ContactForm from "../components/ContactForm.vue";
+  import TodoList from "../components/TodoList.vue";
+  import SlideShowApp from "../components/SlideShowApp.vue";
 
-export default {
-  components: {
-    QuizApp,
-    Table,
-    ContactForm,
-    TodoList,
-    SlideShowApp,
-  },
+  export default {
+    components: {
+      QuizApp,
+      Table,
+      ContactForm,
+      TodoList,
+      SlideShowApp,
+    },
 
-  data() {
-    return {
-      active: false,
-    };
-  },
-};
+    data() {
+      return {
+        active: false,
+      };
+    },
+  };
 </script>
 
 <style>
-.dashboard-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 100px;
-  grid-auto-columns: 200px;
-}
+  h2 {
+    display: inline-block;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+  }
 
-.dashboard-components {
-  margin-top: 0.2em;
-  max-width: 750px;
-  margin: 0.2em;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 0.4em;
-  /* overflow: scroll; */
-  border: 5px white solid;
-}
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 150px;
+  }
 
-.dash-todo {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 5;
-  background: var(--component-yellow);
-}
+  .dashboard-components {
+    /* margin-top: 0.2em; */
 
-.dash-quiz {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  background: var(--component-blue);
-}
+    margin: var(--margin);
 
-.dash-quiz .quiz-body__box {
-  height: 100%;
-}
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 0.4em;
+    /* overflow: scroll; */
+    border: 5px white solid;
+  }
 
-.dash-slide {
-  grid-row-start: 3;
-  grid-row-end: 5;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  background: var(--component-orange);
-}
+  .dash-todo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    background: var(--component-yellow);
+  }
 
-.dash-todo .todo-box {
-  /* background-color: aqua; */
-  width: 50%;
-}
+  .dash-quiz {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background: var(--component-blue);
+  }
 
-.dash-slide .slideshow-container {
-  width: 100%;
-  height: 100%;
-}
+  .dash-quiz .quiz-body__box {
+    height: 100%;
+  }
 
-.dash-slide img {
-  max-height: 200px;
-}
+  .dash-slide {
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background: var(--component-orange);
+  }
 
-.dash-table {
-  grid-row-start: 5;
-  grid-row-end: 7;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background: var(--component-pink);
-}
+  .dash-slide .image_nav,
+  .dash-slide .image_buttons,
+  .dash-slide figcaption {
+    display: none;
+  }
 
-.dash-contact {
-  grid-row-start: 7;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background: var(--component-green);
-}
+  .dash-slide .slideshow-container {
+    margin-top: var(--margin);
+    width: 90%;
+    height: 90%;
+  }
+
+  .dash-todo .todo-box {
+    width: 50%;
+  }
+
+  .dash-table {
+    grid-row-start: 5;
+    grid-row-end: 7;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: var(--component-pink);
+  }
+
+  .dash-contact {
+    grid-row-start: 7;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: var(--component-green);
+  }
+
+  .dash-contact button {
+    display: inline;
+  }
 </style>

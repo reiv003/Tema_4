@@ -3,12 +3,21 @@
     <table>
       <thead>
         <tr>
-          <th class="table-container__tr"><button @click="sortTableBySubject">Emne</button>
+          <th class="table-container__tr">
+            <button @click="sortTableBySubject">Emne</button>
           </th>
-          <th class="table-container__tr"><button @click="sortTableByDate">Dato</button></th>
-          <th class="table-container__tr"><button @click="sortTableByTime">Kl.</button></th>
-          <th class="table-container__tr"><button @click="sortTableByRoom">Rom</button></th>
-          <th class="table-container__tr"><button @click="sortTableByTeacher">Lærer</button></th>
+          <th class="table-container__tr">
+            <button @click="sortTableByDate">Dato</button>
+          </th>
+          <th class="table-container__tr">
+            <button @click="sortTableByTime">Kl.</button>
+          </th>
+          <th class="table-container__tr">
+            <button @click="sortTableByRoom">Rom</button>
+          </th>
+          <th class="table-container__tr">
+            <button @click="sortTableByTeacher">Lærer</button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -74,7 +83,7 @@
           },
           {
             subject: "MENA3300: Nanoteknologi",
-            date: "2022-01-18",
+            date: "2022-01-17",
             time: "12.15 - 16.00",
             room: "KJM Aud 3",
             teacher: "A. Koposov",
@@ -84,11 +93,10 @@
     },
 
     methods: {
-
       /*https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-      The compare function argument is necessary to sort objects in an array. 
-      The way we've implemented sort requires a new method for each data value/table column, and for this method to be applied to the th in question. 
-      This does not scale well, and should be changed to take in an arbitrary value from the array's objects*/
+        The compare function argument is necessary to sort objects in an array. 
+        The way we've implemented sort requires a new method for each data value/table column, and for this method to be applied to the th in question. 
+        This does not scale well, and should be changed to take in an arbitrary value from the array's objects*/
       sortTableByDate() {
         this.schoolClasses.sort(function (a, b) {
           if (a.date < b.date) {
@@ -111,7 +119,7 @@
           }
           return 0;
         });
-       },
+      },
 
       sortTableBySubject() {
         this.schoolClasses.sort(function (a, b) {

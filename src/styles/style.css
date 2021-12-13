@@ -3,7 +3,6 @@ body {
 	grid-template-rows: min-content auto min-content;
 	background-color: var(--body-background);
 	font-size: 40px;
-	/* min-height: 100vh; */
 	margin: 0;
 	font-family: BarlowSemiCondensed;
 }

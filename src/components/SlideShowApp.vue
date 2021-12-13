@@ -1,22 +1,21 @@
 <template>
   <div class="slideshow-container">
-    <h2>Mine bilder</h2>
-    <div class="image_buttons">
-      <button @click="previousImage">Forrige</button>
-      <button @click="nextImage">Neste</button>
-    </div>
-
     <div class="images">
       <figure>
         <img
           class="image"
           :src="currentImage.imagePath"
-          :alt="currentImage.caption"
+          :alt="currentImage.altText"
         />
-        <figcaption class="image__caption">
-          {{ currentImage.caption }}
+        <figcaption class="image__date">
+          {{ currentImage.date }}
         </figcaption>
       </figure>
+    </div>
+
+    <div class="image_buttons">
+      <button @click="previousImage">Forrige</button>
+      <button @click="nextImage">Neste</button>
     </div>
 
     <div class="image_nav">
@@ -41,27 +40,32 @@
           {
             name: "Autosampler",
             imagePath: "../images/autosampler.jpg",
-            caption: "NMR autosampler for academic research.",
+            date: "2022-01-28",
+            altText: "Autosampler",
           },
           {
             name: "Chemicals",
             imagePath: "../images/chemicals.jpg",
-            caption: "Flasker med forskjellige løsninger",
+            date: "2022-02-17",
+            altText: "Løsninger i flasker",
           },
           {
             name: "Glass sketch",
             imagePath: "../images/glass_sketch.jpg",
-            caption: "Work up of a reaction sketched on fume hood sash glass",
+            date: "2022-03-28",
+            altText: "Skisse på glasstavle",
           },
           {
             name: "Plants beaker",
             imagePath: "../images/plants_beakers.jpg",
-            caption: "Plants in beakers",
+            date: "2022-01-28",
+            altText: "Planter i flasker",
           },
           {
             name: "Reaction",
             imagePath: "../images/reaction.jpg",
-            caption: "Reaction is stirred and heated with an oil bath.",
+            date: "2022-01-16",
+            altText: "Løsning varmes opp",
           },
         ],
       };
@@ -92,27 +96,21 @@
 <style>
   .slideshow-container {
     position: relative;
-    width: 80vw;
-    height: 80vh;
-    background: var(--component-orange);
+    width: 60%;
+    height: 80%;
     margin: auto;
   }
 
   .image_nav {
-    position: absolute;
-    bottom: 0;
-    transform: translateY(100%);
     display: flex;
     justify-content: center;
-    padding: 0.5em;
-    width: 100%;
   }
 
   .image_nav button {
     background-color: aquamarine;
     border: rgb(65, 202, 161) 2px solid;
     padding: 0.3em;
-    margin: 10px;
+    margin: 0.5em;
   }
 
   .image_nav button:hover {
@@ -120,42 +118,23 @@
   }
 
   .image_buttons {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
     display: flex;
     justify-content: space-between;
   }
 
   .image_buttons button {
+    margin-top: 0.5em;
     padding: 0.5em;
     color: blue;
   }
 
   .images {
-    position: absolute;
-    top: 50;
-    width: 100%;
+    width: 80%;
     height: 80%;
+    margin: auto;
   }
   .images .image {
-    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-  }
-
-  .image__caption {
-    transform: translateY(1250%);
-  }
-
-  .visible {
-    display: block;
-  }
-
-  .notVisible {
-    display: none;
   }
 </style>
