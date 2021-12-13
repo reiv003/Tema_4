@@ -1,5 +1,5 @@
 <template>
-<Header title="S-App" color="var(--header-background)"/> 
+  <Header title="S-App" color="var(--header-background)" />
   <div class="dashboard-container">
     <div class="dashboard-components dash-todo">
       <h2>
@@ -41,36 +41,36 @@
       <div v-if="active" class="contact__content"><ContactForm /></div>
     </div>
   </div>
-  <Footer color="var(--footer-background"/>
+  <Footer color="var(--footer-background" />
 </template>
 
 
 <script>
-  import Header from "../components/Header.vue";
-  import Table from "../components/Table.vue";
-  import QuizApp from "../components/QuizApp.vue";
-  import ContactForm from "../components/ContactForm.vue";
-  import TodoList from "../components/TodoList.vue";
-  import SlideShowApp from "../components/SlideShowApp.vue";
-  import Footer from "../components/Footer.vue";
+import Header from "../components/Header.vue";
+import Table from "../components/Table.vue";
+import QuizApp from "../components/QuizApp.vue";
+import ContactForm from "../components/ContactForm.vue";
+import TodoList from "../components/TodoList.vue";
+import SlideShowApp from "../components/SlideShowApp.vue";
+import Footer from "../components/Footer.vue";
 
-  export default {
-    components: {
-      Header,
-      QuizApp,
-      Table,
-      ContactForm,
-      TodoList,
-      SlideShowApp,
-      Footer,
-    },
+export default {
+  components: {
+    Header,
+    QuizApp,
+    Table,
+    ContactForm,
+    TodoList,
+    SlideShowApp,
+    Footer,
+  },
 
-    data() {
-      return {
-        active: false,
-      };
-    },
-  };
+  data() {
+    return {
+      active: false,
+    };
+  },
+};
 </script>
 
 <style>
@@ -83,7 +83,7 @@ h2 {
 
 .dashboard-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 150px;
 }
 

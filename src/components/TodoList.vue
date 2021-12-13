@@ -11,40 +11,38 @@
     </div>
     <table class="todo__table">
       <thead>
-        <th class="todo__table-th table__task">Oppgave</th>
-        <th class="todo__table-th table__status">Status</th>
-        <th class="todo__table-th table__svg">Rediger</th>
-        <th class="todo__table-th table__svg">Slett</th>
+        <th class="table__header table__header__task-status">Oppgave</th>
+        <th class="table__header table__header__task-status">Status</th>
+        <th class="table__header table__header__svg">Rediger</th>
+        <th class="table__header table__header__svg">Slett</th>
       </thead>
 
       <tbody>
         <tr v-for="(task, index) in tasks" :key="index">
-          <td class="todo__table-td">
-            <span :class="{ finished: task.status === 'Ferdig' }">{{
+          <td class="table__data">
+            <span :class="{ finishedLineThrough: task.status === 'Ferdig' }">{{
               task.name
             }}</span>
           </td>
-          <td class="todo__table-td">
+          <td class="table__data">
             <button
               @click="changeStatus(index)"
-              class="table-body__status"
               :class="{
-                red: task.status === 'Må gjøre',
-                yellow: task.status === 'Holder på',
-                green: task.status === 'Ferdig',
+                redDone: task.status === 'Må gjøre',
+                greenTodo: task.status === 'Ferdig',
               }"
             >
               {{ task.status }}
             </button>
           </td>
-          <td class="todo__table-td">
+          <td class="table__data">
             <button @click="editTask(index)">
               <span class="table-body__edit-svg">
                 <img src="/images/edit.svg" alt="" />
               </span>
             </button>
           </td>
-          <td class="todo__table-td">
+          <td class="table__data">
             <button @click="deleteTask(index)">
               <span class="table-delete-svg">
                 <img src="/images/trash.svg" alt=""
@@ -63,7 +61,7 @@ export default {
     return {
       task: "",
       editedTask: null,
-      availableStatuses: ["Må gjøre", "Holder på", "Ferdig"],
+      availableStatuses: ["Må gjøre", "Ferdig"],
 
       tasks: [
         {
@@ -74,11 +72,20 @@ export default {
     };
   },
 
+  /* If localState exists make tasks = localSate wich triggers the returnTaskLocally method */
+  created() {
+    const localState = this.returnTasksLocally();
+
+    if (localState) {
+      this.tasks = localState;
+    }
+  },
+
   methods: {
-    /* Hvis submit knappen blir trykket, men det er ikke skrevt noe tekst return ingenting
-       Hvis edit knappen ikke har blitt trykket pushes en task med et navn og status 'må gjøre'
-       Navnet til editedTask blir putta inn i input, og redigert på og pusha som en oppdatert task  
-       Gjør at inputen blir tom etter slik at man slipper å slette den forrige tasken for så å sikrive den nye */
+    /* If the submit button is clicked, but nothing is written in the input, return nothing.
+       If the edit button has been clicked, the task that is written in the input with status 'må gjøre' is pushed.
+       editedTask's name (the task) gets put into the input, here you can edit it and the edited version gets pushed when the submit task is clicked. 
+       Makes the input emty after the task has been pushed, so that you can write a new task without deleting the previos tasks text. */
     submitTask() {
       if (this.task.length === 0) {
         return;
@@ -95,29 +102,49 @@ export default {
       }
 
       this.task = "";
+      this.storeTasksLocally();
     },
 
-    /* Når delete knappen blir trykket på splice som bare sletter den ene tasken */
+    /* When the delete button has been clicked the task that has been clicked gets spliced. */
     deleteTask(index) {
       this.tasks.splice(index, 1);
+      this.storeTasksLocally();
     },
 
-    /* Når man trykker på edit knappen blir task navnet flytta til inputen (task)
-       editedTask er egentlig null, men blir endra til en index */
+    /* When the edit button is clicked, the task name gets put intp the input
+       editedTask is null, but gets changed to an index, so that the old task gets uptated, and a new task with the updated task gets pushed */
     editTask(index) {
       this.task = this.tasks[index].name;
       this.editedTask = index;
+      this.storeTasksLocally();
     },
 
-    /* Finner indexen til current status inni availebleStatuses
-       Når newIndex er større en 2 som er mer lengden på arrayet, start på nytt på 0
-       Bytter oppgave statusen med å bruke newIndex */
+    /* Finner indexen til current status i availibleStatuses. 
+       Finds the index of the current status in availibleStatuses.
+       Hvis newIndex blir trykka på blir indexen 1, hvis man trykker igjen blir indexen 0 slik at arrayet blir loopa. Denne måten funka bare med 2 statuser i arayet og ikke 3.
+       If newIndex is clicked, the index changes to 1, if you click it again the index gets changed back to 0, this makes the array loop. (This worked with 2 indexes in the array and not 3).
+       Changes status in tasks with what is beeing decided in the variabel over */
     changeStatus(index) {
       let newIndex = this.availableStatuses.indexOf(this.tasks[index].status);
-      if (++newIndex > 2) {
+      if (newIndex++) {
         newIndex = 0;
       }
       this.tasks[index].status = this.availableStatuses[newIndex];
+      this.storeTasksLocally();
+    },
+
+    /* Makes a key in localStorage called 'todo-list-items'
+       Stringifies all the tasks in 'tasks' so they show in localStorage */
+    storeTasksLocally() {
+      window.localStorage.setItem(
+        "todo-list-items",
+        JSON.stringify(this.tasks)
+      );
+    },
+
+    /* retrives data from the key in localStorage called 'todo-list-items' and returns a parsed version */
+    returnTasksLocally() {
+      return JSON.parse(window.localStorage.getItem("todo-list-items"));
     },
   },
 };
@@ -128,6 +155,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 80%;
+  margin-left: 10%;
 }
 
 .todo__header {
@@ -147,46 +175,38 @@ export default {
   width: 20%;
 }
 
-.todo__table-th {
-  padding: 0.2em;
-  background: var(--component-yellow);
-}
-
-.todo__table-td {
-  padding: 0.2em;
-  padding-left: 1.5em;
-}
-
 .todo__table {
   background: white;
 }
 
-.table__task {
-  width: 20%;
+.table__header {
+  padding: 0.2em;
+  background: var(--component-yellow);
 }
 
-.table__status {
-  width: 20%;
+.table__data {
+  padding: 0.2em;
+  padding-left: 1.5em;
 }
 
-.table__svg {
+.table__header__task-status {
+  width: 22%;
+}
+
+.table__header__svg {
   width: 8%;
 }
 
-/* :class */
-.finished {
+/********** :class **********/
+.finishedLineThrough {
   text-decoration: line-through;
 }
 
-.red {
+.redDone {
   color: var(--score-wrong);
 }
 
-.yellow {
-  color: var(--score-between);
-}
-
-.green {
+.greenTodo {
   color: var(--score-correct);
 }
 </style>

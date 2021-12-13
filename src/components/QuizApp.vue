@@ -1,8 +1,10 @@
 <template>
   <body class="quiz">
-    <div class="quiz__stopwatch"><Stopwatch /></div>
+    <div class="quiz__stopwatch">
+      <Stopwatch />
+    </div>
     <div class="quiz-body">
-      <!-- spørsmålene vises når indxen til quizen er mindre en count(lengden på quizzen) -->
+      <!-- The questions will only show when the index of the quiz is less than the count (8) -->
       <div v-if="index < count">
         <p class="quiz-body__question">{{ questions[index]["question"] }}</p>
         <label
@@ -17,8 +19,9 @@
               selectedAlternative != '',
           }"
         >
-          <!--  @click -> når man trykker på et av alternativene skal 'answered methoden' skje
-                :disabled -> gjør at man bare kan velge bare et av alternativene -->
+          <!--  @click -> 
+          
+                :disabled -> Does so that you can only choose one alternative -->
           <input
             class="quiz-body__radio"
             type="radio"
@@ -31,8 +34,9 @@
         </label>
 
         <!-- Neste knappen vises bare når selectedAlternative har trykket på en knapp
-             og index (0,1,2) er mindre en count(3) - 1 = 2
-             Dette skjer bare på spørsmål 1 og 2 (når indexen er = 0,1) -->
+             The next button only showes when a selectedAlternative has been clicked.
+             and index is less then the count(8) - 1 = 7
+             This only happens on question 1-6 (when the index is between 0-7)-->
         <div>
           <button
             v-show="selectedAlternative != '' && index < count - 1"
@@ -42,9 +46,9 @@
             Neste &gt;
           </button>
 
-          <!-- Avslutt knappen vises bare når selectedAlternative har trykket på en knapp 
-               og index er lik count(3) - 1 = 2 
-               Dette skjer bare på spørsmål 3 (når indexen er 2) -->
+          <!-- The finished button only shows when selectedAlternative has been clicked. 
+               and index is the same as count(8) - 1 = 7 
+               This only happens on question 8 (when the index is 7) -->
           <button
             v-show="selectedAlternative != '' && index === count - 1"
             @click="showResult"
@@ -55,7 +59,7 @@
         </div>
       </div>
 
-      <!-- Resultat siden viser når indexen til quizzen er større en lengden på quizzen (count -> 3) -->
+      <!-- Results show when the index of the quiz is bigger then the length of the quiz(count = 8) -->
       <div v-else>
         <h2 class="quiz-body__result">Resultat</h2>
         <div class="result__scores">
@@ -164,12 +168,11 @@ export default {
   },
 
   methods: {
-    /* når man trykker på et alternativ finner den keyen til hvilken man trykker på a,b,c eller d
+    /* When you click on an alternative it finds the key to the button you clicked (a,b,c or d)
          
-         kalkulerer scoren:
-         hvis man trykker på riktig knapp går 'correctAlternative' ++
-         hvis man trykker på feil knapp går 'wrongScores' ++
-      */
+         Calculate score:
+         if you click on the right alternative the 'correctScore' ++
+         if you click on the wrong alternative the 'wronScore' ++ */
 
     answered(key) {
       this.selectedAlternative = key.target.value;
@@ -198,6 +201,10 @@ export default {
       this.correctScores = 0;
       this.wrongScores = 0;
     },
+
+    startQuiz() {
+      console.log("start");
+    },
   },
 };
 </script>
@@ -208,12 +215,12 @@ export default {
   flex-direction: column;
   align-items: center;
   font-size: 70%;
+  background: var(--component-blue);
 }
 
 .quiz__stopwatch {
-  background: var(--component-blue);
   width: 100%;
-  padding-left: 20%;
+  padding-left: 40%;
   padding-top: 2%;
 }
 
@@ -222,7 +229,6 @@ export default {
   justify-content: center;
   width: 100%;
   padding: 1em;
-  background: var(--component-blue);
 }
 
 .quiz-body__question {
@@ -232,9 +238,9 @@ export default {
 
 .quiz-body__alternatives {
   display: block;
-  padding: 0.06em;
+  padding: 0.3em;
   border-radius: 20px;
-  margin: 0.5em;
+  margin: 1em;
   background: white;
 }
 
