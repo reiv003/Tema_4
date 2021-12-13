@@ -1,9 +1,9 @@
 <template>
   <section id="stopwatch">
-    <p>{{ stopwatch }}</p>
-    <button @click="start">Start</button>
-    <button @click="stop">Stop</button>
-    <button @click="reset">Reset</button>
+    <p class="stopwatch__watch">{{ stopwatch }}</p>
+    <button class="stopwatch__start" @click="start">Start</button>
+    <button class="stopwatch__stop" @click="stop">Stop</button>
+    <button class="stopwatch__reset" @click="reset">Reset</button>
   </section>
 </template>
 
@@ -41,4 +41,15 @@ export default {
 </script>
 
 <style>
+.stopwatch__watch {
+  padding-left: 8%;
+}
+
+.stopwatch__start {
+  margin-right: 2%;
+}
+
+.stopwatch__stop {
+  margin-right: 2%;
+}
 </style>
