@@ -24,7 +24,6 @@
         v-for="(image, index) in images"
         :aria-label="`Gå til bilde ${index + 1}`"
       >
-        -
       </button>
     </div>
   </div>
@@ -99,6 +98,7 @@
     width: 60%;
     height: 80%;
     margin: auto;
+    font-size: 0.7em;
   }
 
   .image_nav {
@@ -107,14 +107,13 @@
   }
 
   .image_nav button {
-    background-color: aquamarine;
-    border: rgb(65, 202, 161) 2px solid;
+    background-color: var(--orange-dark);
     padding: 0.3em;
     margin: 0.5em;
   }
 
   .image_nav button:hover {
-    background: cadetblue;
+    background: var(--component-orange);
   }
 
   .image_buttons {
@@ -125,7 +124,16 @@
   .image_buttons button {
     margin-top: 0.5em;
     padding: 0.5em;
-    color: blue;
+    color: white;
+    background-color: var(--component-orange);
+    border-radius: 25%;
+    height: 2em;
+    width: 5em;
+    font-size: 0.5em;
+  }
+
+  .image_buttons button:hover {
+    background-color: var(--orange-dark);
   }
 
   .images {

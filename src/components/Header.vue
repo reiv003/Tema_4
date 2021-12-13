@@ -41,6 +41,7 @@ contain only the routed content and header is not a child/parent of the view, bu
     font-size: 0.7em;
     display: flex;
     background-color: backgroundColor;
+   
   }
 
   .item {
@@ -54,6 +55,7 @@ contain only the routed content and header is not a child/parent of the view, bu
   }
 
   .item a:hover {
-    background: var(--footer-background);
+    font-weight: bold;
+    text-decoration: underline;
   }
 </style>

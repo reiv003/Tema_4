@@ -1,10 +1,8 @@
 body {
-	display: grid;
-	grid-template-rows: min-content auto min-content;
 	background-color: var(--body-background);
 	font-size: 40px;
-	margin: 0;
 	font-family: BarlowSemiCondensed;
+	
 }
 
 h1 {

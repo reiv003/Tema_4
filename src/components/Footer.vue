@@ -18,13 +18,13 @@
 
 <style>
   footer {
-    position: absolute;
     background-color: backgroundColor;
     height: 3em;
     text-align: center;
     font-size: 0.5em;
-    top: 120vh;
     width: 100%;
+    
+    
   }
 
   footer div {
