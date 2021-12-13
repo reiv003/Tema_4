@@ -173,12 +173,24 @@
   .table-container {
     font-size: 0.8em;
     display: inline-block;
-    background-color: #ffe6f1;
   }
 
-  .table-container__tr {
-    background: var(--component-pink);
+  .table-container th {
     padding: var(--padding);
+    border-right: var(--pink-solid-border);
+  }
+
+  .table-container button {
+    color: var(--pink-dark);
+  }
+
+  .table-container td {
+     border-bottom: var(--pink-solid-border);
+     padding: var(--padding);
+  }
+
+  .table-container tr td {
+    border-right: var(--pink-dashed-border);
   }
 
   .table-container__tr:hover {

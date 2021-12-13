@@ -53,6 +53,7 @@ header {
 }
 
 .item a:hover {
-  background: var(--footer-background);
+  font-weight: bold;
+  text-decoration: underline;
 }
 </style>

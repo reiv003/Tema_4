@@ -27,7 +27,7 @@
 
 	--pink-light: #FFF8FB;
 	--pink-dark: #58414C;
-	--pink-solid-border: #8B6376 solid 4px;
+	--pink-solid-border: rgb(139, 99, 118, 0.4) solid 4px;
 	--pink-dashed-border: #CEB4C5 dashed 2px;
 
 	--green-light: #FAFFF5;

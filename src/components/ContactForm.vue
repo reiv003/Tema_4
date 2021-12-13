@@ -1,5 +1,5 @@
 <template>
-  <div id="contact-view">
+  <div class="contact-container">
     <div>
       Har du en tilbakemelding til oss eller har oppdaget feil i appen? Kontakt
       oss via skjemaet under.
@@ -61,7 +61,7 @@
         v-model="form.message"
       />
 
-      <button @click="submit_form">Send inn</button>
+      <div class="submit-button"><button @click="submit_form">Send inn</button></div>
     </div>
   </div>
 </template>
@@ -88,6 +88,15 @@
 </script>
 
 <style>
+
+  .contact-container {
+    margin: var(--margin);
+    padding: var(--padding);
+    width: 100%;
+    height: 100%;
+    font-size: 0.7em;
+  }
+
   .contact-form {
     display: flex;
     flex-flow: column nowrap;
@@ -98,6 +107,14 @@
     background-color: var(--green-dark);
     color: white;
     border-radius: 23px;
+    width: 20%;
+    position: relative;
+    
+  }
+
+  .submit-button {
+    display: flex;
+    justify-content: right;
   }
 
   .contact-form label,
@@ -114,26 +131,47 @@
     border: 1px solid var(--component-green);
   }
 
+  .contact-form input[type="textarea"] {
+    height: 5em;
+  }
+
+  /*Styles for radio buttons are based on code from this guide
+    https://moderncss.dev/pure-css-custom-styled-radio-buttons/ 
+    This visually hides the default style of a radio button, but does not remove it. 
+    The functionality of the button is kept. These styles simply overlay
+    two circles to mimic the look of a radio button.
+  */
+
   .contact-form input[type="radio"] {
     appearance: none;
     width: 0.5em;
     height: 0.5em;
     border-radius: 50%;
     border: 0.05em solid var(--component-green);
+    display: grid;
+    place-content: center;
   }
+
+  .contact-form input[type="radio"]::before {
+    content: "";
+    width: 0.25em;
+    height: 0.25em;
+    border-radius: 50%;
+    transform: scale(0);
+    background-color: var(--component-green);
+  }
+
+  .contact-form input[type="radio"]:checked::before {
+  transform: scale(1);
+  }   
+
+  .contact-form input[type="radio"]:focus {
+    outline: max(0.10em) solid var(--green-dark);
+    opacity: 0.7;
+  } 
 
   .contact-form__input {
-    border: 1px solid black;
     padding: var(--padding);
-    height: 50px;
-  }
-
-  .contact-form__input + .contact-form__input {
-    margin-top: 0.5em;
-  }
-
-  #contact-view {
-    background-color: var(--green-light-bg);
-    font-size: 0.7em;
+    height: 1.5em;
   }
 </style>
