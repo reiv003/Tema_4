@@ -1,4 +1,5 @@
 <template>
+<Header title="S-App" color="var(--header-background)"/> 
   <div class="dashboard-container">
     <div class="dashboard-components dash-todo">
       <h2>To-do <img src="/images/side_arrow.svg" /></h2>
@@ -25,23 +26,28 @@
       <div v-if="active" class="contact__content"><ContactForm /></div>
     </div>
   </div>
+  <Footer color="var(--footer-background"/>
 </template>
 
 
 <script>
+  import Header from "../components/Header.vue";
   import Table from "../components/Table.vue";
   import QuizApp from "../components/QuizApp.vue";
   import ContactForm from "../components/ContactForm.vue";
   import TodoList from "../components/TodoList.vue";
   import SlideShowApp from "../components/SlideShowApp.vue";
+  import Footer from "../components/Footer.vue";
 
   export default {
     components: {
+      Header,
       QuizApp,
       Table,
       ContactForm,
       TodoList,
       SlideShowApp,
+      Footer,
     },
 
     data() {

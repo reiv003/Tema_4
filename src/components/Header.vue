@@ -1,7 +1,10 @@
 <template>
-  <header>
+<!-- Header needs to be imported on every view in order to change title and color with this solution.
+We tried solving this in other ways, but were not able to make anything else work. The main problem is that the views
+contain only the routed content and header is not a child/parent of the view, but a sibling.-->
+  <header :style="{backgroundColor: color}">
     <div><img src="/images/logo.svg" /></div>
-    <h1>S-app</h1>
+    <h1>{{ title }}</h1>
     <div class="item">
       <RouterLink :to="{ name: 'time_table' }">Timeplan</RouterLink>
     </div>
@@ -24,14 +27,20 @@
 </template>
 
 <script>
-  export default {};
+  export default {
+    props: {
+      title: String,
+      color: String
+    },
+
+  };
 </script>
 
 <style>
   header {
     font-size: 0.7em;
     display: flex;
-    background-color: var(--header-background);
+    background-color: backgroundColor;
   }
 
   .item {
