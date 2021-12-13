@@ -1,14 +1,14 @@
 
 <template>
-  <Header title="To-do" color="var(--component-blue)"/>
+  <Header title="To-do" color="var(--component-yellow)" />
   <TodoList />
-  <Footer color="var(--component-blue"/>
+  <Footer color="var(--component-yellow)" />
 </template>
 
 <script>
-  import Header from "../components/Header.vue";
-  import TodoList from "../components/TodoList.vue";
-  import Footer from "../components/Footer.vue";
+import Header from "../components/Header.vue";
+import TodoList from "../components/TodoList.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   components: {

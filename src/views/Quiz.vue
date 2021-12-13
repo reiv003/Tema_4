@@ -1,7 +1,7 @@
 <template>
-  <Header title="Quiz" color="var(--component-yellow)" />
+  <Header title="Quiz" color="var(--component-blue)" />
   <QuizApp />
-  <Footer color="var(--component-yellow" />
+  <Footer color="var(--component-blue)" />
 </template>
 
 <script>

@@ -41,8 +41,12 @@ export default {
 </script>
 
 <style>
+#stopwatch {
+  margin-left: 2%;
+}
+
 .stopwatch__watch {
-  padding-left: 8%;
+  margin-left: 4%;
 }
 
 .stopwatch__start {

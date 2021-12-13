@@ -19,9 +19,7 @@
               selectedAlternative != '',
           }"
         >
-          <!--  @click -> 
-          
-                :disabled -> Does so that you can only choose one alternative -->
+          <!--  :disabled -> Does so that you can only choose one alternative -->
           <input
             class="quiz-body__radio"
             type="radio"
@@ -173,7 +171,6 @@ export default {
          Calculate score:
          if you click on the right alternative the 'correctScore' ++
          if you click on the wrong alternative the 'wronScore' ++ */
-
     answered(key) {
       this.selectedAlternative = key.target.value;
       if (
@@ -214,31 +211,27 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 70%;
+  font-size: 75%;
   background: var(--component-blue);
 }
 
 .quiz__stopwatch {
   width: 100%;
-  padding-left: 40%;
-  padding-top: 2%;
 }
 
 .quiz-body {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 1em;
 }
 
 .quiz-body__question {
-  margin-top: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .quiz-body__alternatives {
   display: block;
-  padding: 0.3em;
+  padding: 0.5em;
   border-radius: 20px;
   margin: 1em;
   background: white;
@@ -250,20 +243,18 @@ export default {
 
 .quiz-body__button {
   float: right;
-  padding: 0.4em;
+  padding: 0.5em;
   border-radius: 20px;
-  margin-top: 0.6em;
   background: var(--component-pink);
 }
 
 .quiz-body__result {
   padding-top: 1em;
-  padding-left: 1vw;
   background: none;
 }
 
 .result__scores {
-  padding-left: 1vw;
+  padding-left: 0.5vw;
 }
 
 .result__scores__correct {
@@ -282,7 +273,7 @@ export default {
   padding: 0.6em;
   border-radius: 20px;
   margin-top: 2em;
-  margin-left: 3vw;
+  margin-left: 1vw;
   background: var(--component-pink);
 }
 
