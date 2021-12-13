@@ -67,13 +67,9 @@
   }
 
   .dashboard-components {
-    /* margin-top: 0.2em; */
-
     margin: var(--margin);
-
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 0.4em;
-    /* overflow: scroll; */
     border: 5px white solid;
   }
 

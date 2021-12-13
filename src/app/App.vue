@@ -5,16 +5,14 @@
 </template>
 
 <script>
-  import ContactForm from "../components/ContactForm.vue";
-  import Dashboard from "../views/Dashboard.vue";
   import Header from "../components/Header.vue";
+  import Dashboard from "../views/Dashboard.vue";
   import Footer from "../components/Footer.vue";
 
   export default {
     components: {
-      Dashboard,
-      ContactForm,
       Header,
+      Dashboard,
       Footer,
     },
   };
