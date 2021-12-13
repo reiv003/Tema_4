@@ -5,7 +5,7 @@
         v-model="task"
         class="header__input"
         type="text"
-        placeholder="Legg til oppgave her"
+        placeholder="Legg til oppgave"
       />
       <button @click="submitTask" class="header__submit">Send inn</button>
     </div>
@@ -128,7 +128,6 @@ export default {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin-left: 10%;
 }
 
 .todo__header {

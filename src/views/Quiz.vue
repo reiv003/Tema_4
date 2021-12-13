@@ -1,18 +1,15 @@
 <template>
-  <Stopwatch />
   <QuizApp />
 </template>
 
 <script>
-  import QuizApp from "../components/QuizApp.vue";
-  import Stopwatch from "../components/Stopwatch.vue";
+import QuizApp from "../components/QuizApp.vue";
 
-  export default {
-    components: {
-      QuizApp,
-      Stopwatch,
-    },
-  };
+export default {
+  components: {
+    QuizApp,
+  },
+};
 </script>
 
 <style>

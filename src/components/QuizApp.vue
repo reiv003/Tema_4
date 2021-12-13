@@ -1,7 +1,8 @@
 <template>
   <body class="quiz">
+    <div class="quiz__stopwatch"><Stopwatch /></div>
     <div class="quiz-body">
-      <!-- spørsmålene vises når indxen til quizen er mindre en count(lengden på quizzen -> 3) -->
+      <!-- spørsmålene vises når indxen til quizen er mindre en count(lengden på quizzen) -->
       <div v-if="index < count">
         <p class="quiz-body__question">{{ questions[index]["question"] }}</p>
         <label
@@ -76,7 +77,11 @@
 </template>
 
 <script>
+import Stopwatch from "./Stopwatch.vue";
+
 export default {
+  components: { Stopwatch },
+
   data() {
     return {
       index: 0,
@@ -205,10 +210,17 @@ export default {
   font-size: 70%;
 }
 
+.quiz__stopwatch {
+  background: var(--component-blue);
+  width: 100%;
+  padding-left: 20%;
+  padding-top: 2%;
+}
+
 .quiz-body {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 100%;
   padding: 1em;
   background: var(--component-blue);
 }
@@ -241,6 +253,7 @@ export default {
 .quiz-body__result {
   padding-top: 1em;
   padding-left: 1vw;
+  background: none;
 }
 
 .result__scores {
