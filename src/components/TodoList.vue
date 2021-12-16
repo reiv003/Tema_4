@@ -5,8 +5,7 @@
         v-model="task"
         class="header__input"
         type="text"
-        placeholder="Legg til oppgave"
-      />
+        placeholder="Legg til oppgave"/>
       <button @click="submitTask" class="header__submit">Send inn</button>
     </div>
     <table class="todo__table">
@@ -30,8 +29,7 @@
               :class="{
                 redDone: task.status === 'Må gjøre',
                 greenTodo: task.status === 'Ferdig',
-              }"
-            >
+              }">
               {{ task.status }}
             </button>
           </td>
@@ -45,8 +43,8 @@
           <td class="table__data">
             <button @click="deleteTask(index)">
               <span class="table-delete-svg">
-                <img src="/images/trash.svg" alt=""
-              /></span>
+                <img src="/images/trash.svg" alt=""/>
+              </span>
             </button>
           </td>
         </tr>
@@ -151,62 +149,62 @@ export default {
 </script>
 
 <style>
-.todo {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin-left: 10%;
-}
+  .todo {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+  }
 
-.todo__header {
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
+  .todo__header {
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
 
-.header__input {
-  padding: 0.2em;
-  width: 45%;
-  margin-left: 17%;
-}
+  .header__input {
+    padding: 0.2em;
+    width: 45%;
+    margin-left: 17%;
+  }
 
-.header__submit {
-  background: var(--component-green);
-  padding: 0.2em;
-  width: 20%;
-}
+  .header__submit {
+    background: var(--component-green);
+    padding: 0.2em;
+    width: 20%;
+  }
 
-.todo__table {
-  background: white;
-}
+  .todo__table {
+    background: white;
+  }
 
-.table__header {
-  padding: 0.2em;
-  background: var(--component-yellow);
-}
+  .table__header {
+    padding: 0.2em;
+    background: var(--component-yellow);
+  }
 
-.table__data {
-  padding: 0.2em;
-  padding-left: 1.5em;
-}
+  .table__data {
+    padding: 0.2em;
+    padding-left: 1.5em;
+  }
 
-.table__header__task-status {
-  width: 22%;
-}
+  .table__header__task-status {
+    width: 22%;
+  }
 
-.table__header__svg {
-  width: 8%;
-}
+  .table__header__svg {
+    width: 8%;
+  }
 
-/********** :class **********/
-.finishedLineThrough {
-  text-decoration: line-through;
-}
+  /********** :class **********/
+  .finishedLineThrough {
+    text-decoration: line-through;
+  }
 
-.redDone {
-  color: var(--score-wrong);
-}
+  .redDone {
+    color: var(--score-wrong);
+  }
 
-.greenTodo {
-  color: var(--score-correct);
-}
+  .greenTodo {
+    color: var(--score-correct);
+  }
 </style>

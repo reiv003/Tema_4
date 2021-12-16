@@ -1,5 +1,5 @@
 <template>
-  <!-- The slideshow was largely based on Alejandro's code, and I did not make many changes functionally. -->
+  <!-- The slideshow is largely based on Alejandro's code, and I did not make many changes functionally. -->
   <div class="slideshow-container">
     <div class="images">
       <figure>
@@ -18,17 +18,16 @@
       </figure>
     </div>
 
-    <div class="image_buttons">
+    <div class="image-buttons">
       <button @click="previousImage">Forrige bilde</button>
       <button @click="nextImage">Neste bilde</button>
     </div>
 
-    <div class="image_nav">
+    <div class="image-nav">
       <button
         @click="goToIndex(index)"
         v-for="(image, index) in images"
-        :aria-label="`Gå til bilde ${index + 1}`"
-      >
+        :aria-label="`Gå til bilde ${index + 1}`">
         <!-- The +1 makes the number visually more readable, ie. skips the 0 which is the actual first index -->
         {{ index + 1 }}
       </button>
@@ -88,7 +87,7 @@
       },
     },
 
-    /* These methods uses the index of the array to determine where we are in the array, in order to navigate back and forth and to any given position in the array.
+    /*These methods uses the index of the array to determine where we are in the array, in order to navigate back and forth and to any given position in the array.
       if the index is at 0, previousImage will go one step back in the array through negating the total length by 1 (ie the starting position when loading the page/component) so
       we can go to the last image in the array. If we are not at 0, ie anywhere else in the array, it will instead negate the current index by -1, stepping backward in a loop. nextImage does the same thing, just adding +1 instead. goToIndex sets the current index based on which dot was clicked, through the use of a loop in the template to create a dot for each index. */
     methods: {
@@ -109,55 +108,50 @@
 
 <style>
   .slideshow-container {
-    position: relative;
     width: 60%;
     height: 80%;
     margin: auto;
     font-size: 0.7em;
   }
 
-  .image_nav {
+  .image-nav {
     display: flex;
     justify-content: center;
   }
 
-  .image_nav button {
+  .image-nav button {
     background-color: var(--orange-dark);
     padding: 0.3em;
     margin: 0.5em;
   }
 
-  .image_nav button:hover {
+  .image-nav button:hover {
     background: var(--component-orange);
   }
 
-  .image_buttons {
+  .image-buttons {
     display: flex;
     justify-content: space-between;
   }
 
-  .image_buttons button {
+  .image-buttons button {
     margin-top: 0.5em;
     padding: 0.5em;
     color: white;
     background-color: var(--component-orange);
-    border-radius: 25%;
-    height: 2em;
-    width: 7em;
+    border-radius: 30%;
     font-size: 0.5em;
   }
 
-  .image_buttons button:hover {
+  .image-buttons button:hover {
     background-color: var(--orange-dark);
   }
 
   .images {
     width: 80%;
-    height: 80%;
     margin: auto;
   }
   .images .image {
     width: 100%;
-    height: 100%;
   }
 </style>

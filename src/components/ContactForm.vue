@@ -12,8 +12,7 @@
         id="name"
         placeholder="Navn"
         name="name"
-        v-model="form.name"
-      />
+        v-model="form.name"/>
       <label for="email">E-post:</label>
       <input
         class="contact-form__input"
@@ -21,36 +20,32 @@
         id="email"
         placeholder="E-post"
         name="email"
-        v-model="form.email"
-      />
+        v-model="form.email"/>
       <div class="contact-form__title">
         Hvilken type melding vil du sende oss?
       </div>
       <div class="contact-form__radio">
         <input
           type="radio"
-          id="message_type_feedback"
-          name="message_type"
+          id="message-type-feedback"
+          name="message-type"
           value="feedback"
-          v-model="form.type"
-        />
-        <label for="message_type_feedback">Ris/ros</label>
+          v-model="form.type"/>
+        <label for="message-type-feedback">Ris/ros</label>
         <input
           type="radio"
-          id="message_type_bug"
-          name="message_type"
+          id="message-type-bug"
+          name="message-type"
           value="bug"
-          v-model="form.type"
-        />
-        <label for="message_type_bug">Feilrapportering</label>
+          v-model="form.type"/>
+        <label for="message-type-bug">Feilrapportering</label>
         <input
           type="radio"
-          id="message_type_suggestion"
-          name="message_type"
+          id="message-type-suggestion"
+          name="message-type"
           value="suggestion"
-          v-model="form.type"
-        />
-        <label for="message_type_suggestion">Forslag til forbedring</label>
+          v-model="form.type"/>
+        <label for="message-type-suggestion">Forslag til forbedring</label>
       </div>
       <label for="message">Melding:</label>
       <input
@@ -58,10 +53,8 @@
         type="textarea"
         id="message"
         placeholder="Hva kan vi hjelpe deg med?"
-        v-model="form.message"
-      />
-
-      <div class="submit-button"><button @click="submit_form">Send inn</button></div>
+        v-model="form.message"/>
+      <div class="submit-button-container"><button @click="submit_form">Send inn</button></div>
     </div>
   </div>
 </template>
@@ -88,19 +81,15 @@
 </script>
 
 <style>
-
   .contact-container {
-    margin: var(--margin);
     padding: var(--padding);
-    width: 100%;
-    height: 100%;
     font-size: 0.7em;
   }
 
   .contact-form {
     display: flex;
     flex-flow: column nowrap;
-    max-width: 800px;
+    max-width: 55%;
   }
 
   .contact-form button {
@@ -108,11 +97,9 @@
     color: white;
     border-radius: 23px;
     width: 20%;
-    position: relative;
-    
   }
 
-  .submit-button {
+  .submit-button-container {
     display: flex;
     justify-content: right;
   }
@@ -124,6 +111,11 @@
 
   .contact-form__radio label {
     font-weight: normal;
+  }
+
+  .contact-form__input {
+    padding: var(--padding);
+    height: 1.5em;
   }
 
   .contact-form input[type="text"],
@@ -139,8 +131,7 @@
     https://moderncss.dev/pure-css-custom-styled-radio-buttons/ 
     This visually hides the default style of a radio button, but does not remove it. 
     The functionality of the button is kept. These styles simply overlay
-    two circles to mimic the look of a radio button.
-  */
+    two circles to mimic the look of a radio button. */
 
   .contact-form input[type="radio"] {
     appearance: none;
@@ -162,16 +153,11 @@
   }
 
   .contact-form input[type="radio"]:checked::before {
-  transform: scale(1);
+    transform: scale(1);
   }   
 
   .contact-form input[type="radio"]:focus {
     outline: max(0.10em) solid var(--green-dark);
     opacity: 0.7;
-  } 
-
-  .contact-form__input {
-    padding: var(--padding);
-    height: 1.5em;
   }
 </style>

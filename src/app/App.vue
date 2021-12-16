@@ -3,16 +3,9 @@
 </template>
 
 <script>
-  import Header from "../components/Header.vue";
-  import Dashboard from "../views/Dashboard.vue";
-  import Footer from "../components/Footer.vue";
 
   export default {
-    components: {
-      Header,
-      Dashboard,
-      Footer,
-    },
+    
   };
 </script>
 

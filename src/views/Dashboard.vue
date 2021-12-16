@@ -3,42 +3,31 @@
   <div class="dashboard-container">
     <div class="dashboard-components dash-todo">
       <h2>
-        <RouterLink :to="{ name: 'to_do' }"
-          >To-do list<img src="/images/side_arrow.svg"
-        /></RouterLink>
+        <RouterLink :to="{ name: 'to_do' }">To-do list<img src="/images/side_arrow.svg"/></RouterLink>
       </h2>
       <TodoList />
     </div>
     <div class="dashboard-components dash-quiz">
       <h2>
-        <RouterLink :to="{ name: 'quiz' }"
-          >Quiz<img src="/images/side_arrow.svg"
-        /></RouterLink>
+        <RouterLink :to="{ name: 'quiz' }">Quiz<img src="/images/side_arrow.svg"/></RouterLink>
       </h2>
       <QuizApp />
     </div>
     <div class="dashboard-components dash-slide">
       <h2>
-        <RouterLink :to="{ name: 'slideshow' }"
-          >Mine bilder <img src="/images/side_arrow.svg"
-        /></RouterLink>
+        <RouterLink :to="{ name: 'slideshow' }">Mine bilder <img src="/images/side_arrow.svg"/></RouterLink>
       </h2>
       <SlideShowApp />
     </div>
     <div class="dashboard-components dash-table">
       <h2>
-        <RouterLink :to="{ name: 'time_table' }"
-          >Timeplan <img src="/images/side_arrow.svg"
-        /></RouterLink>
+        <RouterLink :to="{ name: 'time_table' }">Timeplan <img src="/images/side_arrow.svg"/></RouterLink>
       </h2>
       <Table />
     </div>
     <div class="dashboard-components dash-contact">
       <!-- Shows the collapsed contact form based on value of 'active'. The component container does not expand to fit the new content, and it is partially hidden behind the footer. I was unable to fix this. -->
-      <button
-        @click="active = !active"
-        aria-label="Vis eller skjul kontaktskjema"
-      >
+      <button @click="active = !active" aria-label="Vis eller skjul kontaktskjema">
         <img src="/images/arrow_down.svg" />
       </button>
       <h2>
@@ -46,13 +35,11 @@
           >Kontakt oss <img src="/images/side_arrow.svg"
         /></RouterLink>
       </h2>
-
       <div v-if="active" class="contact__content"><ContactForm /></div>
     </div>
   </div>
   <Footer color="var(--footer-background" />
 </template>
-
 
 <script>
   import Header from "../components/Header.vue";
@@ -84,10 +71,7 @@
 
 <style>
   h2 {
-    display: inline-block;
-    justify-content: space-around;
     background-color: rgba(255, 255, 255, 0.4);
-    width: 100%;
   }
 
   a {
@@ -106,7 +90,6 @@
   .dashboard-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  
   }
 
   .dashboard-components {
@@ -132,10 +115,6 @@
     background: var(--component-blue);
   }
 
-  .dash-quiz .quiz-body__box {
-    height: 100%;
-  }
-
   .dash-slide {
     grid-row-start: 3;
     grid-row-end: 5;
@@ -144,14 +123,10 @@
     background: var(--component-orange);
   }
 
-  .dash-slide .image_nav,
-  .dash-slide .image_buttons,
+  .dash-slide .image-nav,
+  .dash-slide .image-buttons,
   .dash-slide .image__date {
     display: none;
-  }
-
-  .dash-todo .todo-box {
-    width: 50%;
   }
 
   .dash-table {
@@ -167,9 +142,5 @@
     grid-column-start: 1;
     grid-column-end: 3;
     background: var(--component-green);
-  }
-
-  .dash-contact button {
-    display: inline;
   }
 </style>

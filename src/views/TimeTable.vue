@@ -35,5 +35,4 @@
   #table-view .logo {
     fill: var(--pink-dark);
   }
-
 </style>

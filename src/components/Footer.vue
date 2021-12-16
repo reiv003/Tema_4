@@ -23,9 +23,6 @@
     height: 3em;
     text-align: center;
     font-size: 0.5em;
-    width: 100%;
-    position: relative;
-    bottom: 0;
   }
 
   footer div {

@@ -16,9 +16,7 @@
             selectorWrong: selectedAlternative === key,
             selectorCorrect:
               key === questions[index]['correctAlternative'] &&
-              selectedAlternative != '',
-          }"
-        >
+              selectedAlternative != '',}">
           <!--  :disabled -> Does so that you can only choose one alternative -->
           <input
             class="quiz-body__radio"
@@ -26,8 +24,7 @@
             :id="key"
             :value="key"
             @click="answered($event)"
-            :disabled="selectedAlternative != ''"
-          />
+            :disabled="selectedAlternative != ''"/>
           {{ alternative }}
         </label>
 
@@ -39,9 +36,8 @@
           <button
             v-show="selectedAlternative != '' && index < count - 1"
             @click="nextQuestion"
-            class="quiz-body__button"
-          >
-            Neste &gt;
+            class="quiz-body__button">
+              Neste &gt;
           </button>
 
           <!-- The finished button only shows when selectedAlternative has been clicked. 
@@ -50,9 +46,8 @@
           <button
             v-show="selectedAlternative != '' && index === count - 1"
             @click="showResult"
-            class="quiz-body__button"
-          >
-            Avslutt
+            class="quiz-body__button">
+              Avslutt
           </button>
         </div>
       </div>
@@ -93,14 +88,23 @@
         count: 8,
         questions: [
           {
-            question:
-              "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
-            alternatives: { a: "Klor", b: "Oksygen", c: "Hydrogen", d: "Litium" },
+            question: "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
+            alternatives: { 
+              a: "Klor",
+              b: "Oksygen", 
+              c: "Hydrogen",
+              d: "Litium" 
+            },
             correctAlternative: "b",
           },
           {
             question: "Hvor mange 'perioder' består det periodiske system av?",
-            alternatives: { a: "7", b: "4", c: "11", d: "9" },
+            alternatives: {
+              a: "7",
+              b: "4",
+              c: "11",
+              d: "9" 
+            },
             correctAlternative: "a",
           },
           {
@@ -166,11 +170,10 @@
     },
 
     methods: {
-      /* When you click on an alternative it finds the key to the button you clicked (a,b,c or d)
-                       
-                       Calculate score:
-                       if you click on the right alternative the 'correctScore' ++
-                       if you click on the wrong alternative the 'wronScore' ++ */
+      /*When you click on an alternative it finds the key to the button you clicked (a,b,c or d)
+        Calculate score:
+        if you click on the right alternative the 'correctScore' ++
+        if you click on the wrong alternative the 'wronScore' ++ */
       answered(key) {
         this.selectedAlternative = key.target.value;
         if (

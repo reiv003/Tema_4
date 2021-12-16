@@ -16,6 +16,7 @@ export default {
       timer: null,
     };
   },
+
   computed: {
     stopwatch() {
       const date = new Date(null);
@@ -30,9 +31,11 @@ export default {
         this.timeGone += 1000;
       }, 1000);
     },
+
     stop() {
       clearInterval(this.timer);
     },
+
     reset() {
       this.timeGone = 0;
     },
@@ -41,19 +44,19 @@ export default {
 </script>
 
 <style>
-#stopwatch {
-  margin-left: 2%;
-}
+  #stopwatch {
+    margin-left: 2%;
+  }
 
-.stopwatch__watch {
-  margin-left: 4%;
-}
+  .stopwatch__watch {
+    margin-left: 4%;
+  }
 
-.stopwatch__start {
-  margin-right: 2%;
-}
+  .stopwatch__start {
+    margin-right: 2%;
+  }
 
-.stopwatch__stop {
-  margin-right: 2%;
-}
+  .stopwatch__stop {
+    margin-right: 2%;
+  }
 </style>

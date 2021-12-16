@@ -3,43 +3,38 @@
     <table>
       <thead>
         <tr>
-          <th class="table-container__tr">
+          <th>
             <button
               @click="sortTableBySubject"
-              aria-label="Sorter tabellen etter emne"
-            >
+              aria-label="Sorter tabellen etter emne">
               Emne
             </button>
           </th>
-          <th class="table-container__tr">
+          <th>
             <button
               @click="sortTableByDate"
-              aria-label="Sorter tabellen etter dato"
-            >
+              aria-label="Sorter tabellen etter dato">
               Dato
             </button>
           </th>
-          <th class="table-container__tr">
+          <th>
             <button
               @click="sortTableByTime"
-              aria-label="Sorter tabellen etter tidspunkt"
-            >
+              aria-label="Sorter tabellen etter tidspunkt">
               Kl.
             </button>
           </th>
-          <th class="table-container__tr">
+          <th>
             <button
               @click="sortTableByRoom"
-              aria-label="Sorter tabellen etter rom"
-            >
+              aria-label="Sorter tabellen etter rom">
               Rom
             </button>
           </th>
-          <th class="table-container__tr">
+          <th>
             <button
               @click="sortTableByTeacher"
-              aria-label="Sorter tabellen etter lærer"
-            >
+              aria-label="Sorter tabellen etter lærer">
               Lærer
             </button>
           </th>
@@ -121,7 +116,7 @@
       /*https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
           The compare function argument is necessary to sort objects in an array. 
           The way we've implemented sort requires a new method for each data value/table column, and for this method to be applied to the th in question. 
-          This does not scale well, and should be changed to take in an arbitrary value from the array's objects*/
+          This does not scale well, and should ideally be changed to take in an arbitrary value from the array's objects*/
       sortTableByDate() {
         this.schoolClasses.sort(function (a, b) {
           if (a.date < b.date) {
@@ -197,7 +192,6 @@
 <style>
   .table-container {
     font-size: 0.8em;
-    display: inline-block;
   }
 
   .table-container th {
@@ -218,7 +212,7 @@
     border-right: var(--pink-dashed-border);
   }
 
-  .table-container__tr:hover {
+  .table-container th:hover {
     background-color: #d3709e;
   }
 
