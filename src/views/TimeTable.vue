@@ -1,6 +1,6 @@
 <template>
   <div id="table-view">
-    <Header title="Timeplan" color="var(--component-pink)"/> 
+    <Header title="Timeplan" headerColor="var(--component-pink)"/> 
     <Table />
     <Footer color="var(--component-pink"/>
   </div>
@@ -26,6 +26,14 @@
 <style>
   #table-view {
     background-color: var(--pink-light);
+  }
+
+  #table-view h1 {
+    color: var(--pink-dark);
+  }
+
+  #table-view .logo {
+    fill: var(--pink-dark);
   }
 
 </style>

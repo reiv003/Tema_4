@@ -1,6 +1,6 @@
 <template>
   <div id="contact-view">
-    <Header title="Kontakt oss" color="var(--component-green)"/> 
+    <Header title="Kontakt oss" headerColor="var(--component-green)"/> 
     <ContactForm />
     <Footer color="var(--component-green"/>
   </div>
@@ -27,4 +27,13 @@
   #contact-view {
     background-color: var(--green-light);
   }
+
+  #contact-view h1 {
+      color: var(--green-dark);
+  }
+
+ #contact-view .logo {
+    fill: var(--green-dark);
+ }
+
 </style>

@@ -4,19 +4,44 @@
       <thead>
         <tr>
           <th class="table-container__tr">
-            <button @click="sortTableBySubject">Emne</button>
+            <button
+              @click="sortTableBySubject"
+              aria-label="Sorter tabellen etter emne"
+            >
+              Emne
+            </button>
           </th>
           <th class="table-container__tr">
-            <button @click="sortTableByDate">Dato</button>
+            <button
+              @click="sortTableByDate"
+              aria-label="Sorter tabellen etter dato"
+            >
+              Dato
+            </button>
           </th>
           <th class="table-container__tr">
-            <button @click="sortTableByTime">Kl.</button>
+            <button
+              @click="sortTableByTime"
+              aria-label="Sorter tabellen etter tidspunkt"
+            >
+              Kl.
+            </button>
           </th>
           <th class="table-container__tr">
-            <button @click="sortTableByRoom">Rom</button>
+            <button
+              @click="sortTableByRoom"
+              aria-label="Sorter tabellen etter rom"
+            >
+              Rom
+            </button>
           </th>
           <th class="table-container__tr">
-            <button @click="sortTableByTeacher">Lærer</button>
+            <button
+              @click="sortTableByTeacher"
+              aria-label="Sorter tabellen etter lærer"
+            >
+              Lærer
+            </button>
           </th>
         </tr>
       </thead>
@@ -94,9 +119,9 @@
 
     methods: {
       /*https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-        The compare function argument is necessary to sort objects in an array. 
-        The way we've implemented sort requires a new method for each data value/table column, and for this method to be applied to the th in question. 
-        This does not scale well, and should be changed to take in an arbitrary value from the array's objects*/
+          The compare function argument is necessary to sort objects in an array. 
+          The way we've implemented sort requires a new method for each data value/table column, and for this method to be applied to the th in question. 
+          This does not scale well, and should be changed to take in an arbitrary value from the array's objects*/
       sortTableByDate() {
         this.schoolClasses.sort(function (a, b) {
           if (a.date < b.date) {
@@ -185,8 +210,8 @@
   }
 
   .table-container td {
-     border-bottom: var(--pink-solid-border);
-     padding: var(--padding);
+    border-bottom: var(--pink-solid-border);
+    padding: var(--padding);
   }
 
   .table-container tr td {

@@ -1,6 +1,6 @@
 <template>
   <div id="slideshow-view">
-    <Header title="Mine bilder" color="var(--component-orange)"/>
+    <Header title="Mine bilder" headerColor="var(--component-orange)"/>
     <SlideShowApp />
     <Footer color="var(--component-orange"/>
   </div>
@@ -21,9 +21,15 @@
 </script>
 
 <style>
+  #slideshow-view {
+    background-color: var(--orange-light)
+  }
 
-#slideshow-view {
-  background-color: var(--orange-light)
-}
+  #slideshow-view h1 {
+    color: var(--orange-dark);
+  }
 
+  #slideshow-view .logo {
+    fill: var(--orange-dark);
+  }
 </style>

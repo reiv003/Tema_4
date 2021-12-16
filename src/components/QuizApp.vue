@@ -1,5 +1,5 @@
 <template>
-  <body class="quiz">
+  <div class="quiz">
     <div class="quiz__stopwatch">
       <Stopwatch />
     </div>
@@ -75,218 +75,217 @@
         </button>
       </div>
     </div>
-  </body>
+  </div>
 </template>
 
 <script>
-import Stopwatch from "./Stopwatch.vue";
+  import Stopwatch from "./Stopwatch.vue";
 
-export default {
-  components: { Stopwatch },
+  export default {
+    components: { Stopwatch },
 
-  data() {
-    return {
-      index: 0,
-      selectedAlternative: "",
-      correctScores: 0,
-      wrongScores: 0,
-      count: 8,
-      questions: [
-        {
-          question:
-            "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
-          alternatives: { a: "Klor", b: "Oksygen", c: "Hydrogen", d: "Litium" },
-          correctAlternative: "b",
-        },
-        {
-          question: "Hvor mange 'perioder' består det periodiske system av?",
-          alternatives: { a: "7", b: "4", c: "11", d: "9" },
-          correctAlternative: "a",
-        },
-        {
-          question: "Hva er det vanligste grunnstoffet i universet?",
-          alternatives: {
-            a: "Oksygen",
-            b: "Neon",
-            c: "Hydrogen",
-            d: "Natrium",
+    data() {
+      return {
+        index: 0,
+        selectedAlternative: "",
+        correctScores: 0,
+        wrongScores: 0,
+        count: 8,
+        questions: [
+          {
+            question:
+              "Hvilket grunnstoff var det man tidligere kalte 'surstoff'?",
+            alternatives: { a: "Klor", b: "Oksygen", c: "Hydrogen", d: "Litium" },
+            correctAlternative: "b",
           },
-          correctAlternative: "c",
-        },
-        {
-          question:
-            "Hva het den russiske kjemikeren som regnes for å være 'periodesystemets' far?",
-          alternatives: {
-            a: "Vladimir Periodnikov",
-            b: "Dmitrij Mendelejev",
-            c: "Sergei Pushkin ",
+          {
+            question: "Hvor mange 'perioder' består det periodiske system av?",
+            alternatives: { a: "7", b: "4", c: "11", d: "9" },
+            correctAlternative: "a",
           },
-          correctAlternative: "b",
-        },
-        {
-          question: "Hvilket grunnstoff har kjemisk symbol W?",
-          alternatives: {
-            a: "Walteruim",
-            b: "Wallium",
-            c: "Wolfram",
-            d: "Willsonium",
+          {
+            question: "Hva er det vanligste grunnstoffet i universet?",
+            alternatives: {
+              a: "Oksygen",
+              b: "Neon",
+              c: "Hydrogen",
+              d: "Natrium",
+            },
+            correctAlternative: "c",
           },
-          correctAlternative: "c",
-        },
-        {
-          question: "Hva kalles de vertikale kolonnene i periodesystemet?",
-          alternatives: {
-            a: "Grupper",
-            b: "Kolonner",
+          {
+            question:
+              "Hva het den russiske kjemikeren som regnes for å være 'periodesystemets' far?",
+            alternatives: {
+              a: "Vladimir Periodnikov",
+              b: "Dmitrij Mendelejev",
+              c: "Sergei Pushkin ",
+            },
+            correctAlternative: "b",
           },
-          correctAlternative: "a",
-        },
-        {
-          question: "Hva er det kjemiske symbolet for Kalsium?",
-          alternatives: {
-            a: "C",
-            b: "Ka",
-            c: "Ca",
-            d: "Cs",
+          {
+            question: "Hvilket grunnstoff har kjemisk symbol W?",
+            alternatives: {
+              a: "Walteruim",
+              b: "Wallium",
+              c: "Wolfram",
+              d: "Willsonium",
+            },
+            correctAlternative: "c",
           },
-          correctAlternative: "c",
-        },
-        {
-          question: "Hvilken gass dannes dersom du blander eddik og natron??",
-          alternatives: {
-            a: "Karbondioksid",
-            b: "Neon",
-            c: "Wolfram",
-            d: "Gull",
+          {
+            question: "Hva kalles de vertikale kolonnene i periodesystemet?",
+            alternatives: {
+              a: "Grupper",
+              b: "Kolonner",
+            },
+            correctAlternative: "a",
           },
-          correctAlternative: "a",
-        },
-      ],
-    };
-  },
-
-  methods: {
-    /* When you click on an alternative it finds the key to the button you clicked (a,b,c or d)
-         
-         Calculate score:
-         if you click on the right alternative the 'correctScore' ++
-         if you click on the wrong alternative the 'wronScore' ++ */
-    answered(key) {
-      this.selectedAlternative = key.target.value;
-      if (
-        this.selectedAlternative ===
-        this.questions[this.index]["correctAlternative"]
-      ) {
-        this.correctScores++;
-      } else {
-        this.wrongScores++;
-      }
+          {
+            question: "Hva er det kjemiske symbolet for Kalsium?",
+            alternatives: {
+              a: "C",
+              b: "Ka",
+              c: "Ca",
+              d: "Cs",
+            },
+            correctAlternative: "c",
+          },
+          {
+            question: "Hvilken gass dannes dersom du blander eddik og natron??",
+            alternatives: {
+              a: "Karbondioksid",
+              b: "Neon",
+              c: "Wolfram",
+              d: "Gull",
+            },
+            correctAlternative: "a",
+          },
+        ],
+      };
     },
 
-    nextQuestion() {
-      this.index++;
-      this.selectedAlternative = "";
-    },
+    methods: {
+      /* When you click on an alternative it finds the key to the button you clicked (a,b,c or d)
+                       
+                       Calculate score:
+                       if you click on the right alternative the 'correctScore' ++
+                       if you click on the wrong alternative the 'wronScore' ++ */
+      answered(key) {
+        this.selectedAlternative = key.target.value;
+        if (
+          this.selectedAlternative ===
+          this.questions[this.index]["correctAlternative"]
+        ) {
+          this.correctScores++;
+        } else {
+          this.wrongScores++;
+        }
+      },
 
-    showResult() {
-      this.index++;
-    },
+      nextQuestion() {
+        this.index++;
+        this.selectedAlternative = "";
+      },
 
-    resetQuiz() {
-      this.index = 0;
-      this.selectedAlternative = "";
-      this.correctScores = 0;
-      this.wrongScores = 0;
-    },
+      showResult() {
+        this.index++;
+      },
 
-    startQuiz() {
-      console.log("start");
+      resetQuiz() {
+        this.index = 0;
+        this.selectedAlternative = "";
+        this.correctScores = 0;
+        this.wrongScores = 0;
+      },
+
+      startQuiz() {
+        console.log("start");
+      },
     },
-  },
-};
+  };
 </script>
 
 <style>
-.quiz {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 75%;
-  background: var(--component-blue);
-}
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 75%;
+  }
 
-.quiz__stopwatch {
-  width: 100%;
-}
+  .quiz__stopwatch {
+    width: 100%;
+  }
 
-.quiz-body {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+  .quiz-body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
-.quiz-body__question {
-  margin-bottom: 1em;
-}
+  .quiz-body__question {
+    margin-bottom: 1em;
+  }
 
-.quiz-body__alternatives {
-  display: block;
-  padding: 0.5em;
-  border-radius: 20px;
-  margin: 1em;
-  background: white;
-}
+  .quiz-body__alternatives {
+    display: block;
+    padding: 0.5em;
+    border-radius: 20px;
+    margin: 1em;
+    background: white;
+  }
 
-.quiz-body__radio {
-  visibility: hidden;
-}
+  .quiz-body__radio {
+    visibility: hidden;
+  }
 
-.quiz-body__button {
-  float: right;
-  padding: 0.5em;
-  border-radius: 20px;
-  background: var(--component-pink);
-}
+  .quiz-body__button {
+    float: right;
+    padding: 0.5em;
+    border-radius: 20px;
+    background: var(--component-pink);
+  }
 
-.quiz-body__result {
-  padding-top: 1em;
-  background: none;
-}
+  .quiz-body__result {
+    padding-top: 1em;
+    background: none;
+  }
 
-.result__scores {
-  padding-left: 0.5vw;
-}
+  .result__scores {
+    padding-left: 0.5vw;
+  }
 
-.result__scores__correct {
-  display: inline;
-  font-size: 150%;
-  color: var(--score-correct);
-}
+  .result__scores__correct {
+    display: inline;
+    font-size: 150%;
+    color: var(--score-correct);
+  }
 
-.result__scores__wrong {
-  display: inline;
-  font-size: 150%;
-  color: var(--score-wrong);
-}
+  .result__scores__wrong {
+    display: inline;
+    font-size: 150%;
+    color: var(--score-wrong);
+  }
 
-.result__reset-button {
-  padding: 0.6em;
-  border-radius: 20px;
-  margin-top: 2em;
-  margin-left: 1vw;
-  background: var(--component-pink);
-}
+  .result__reset-button {
+    padding: 0.6em;
+    border-radius: 20px;
+    margin-top: 2em;
+    margin-left: 1vw;
+    background: var(--component-pink);
+  }
 
-/********** :class **********/
-.selector:hover {
-  background: #ccc;
-}
+  /********** :class **********/
+  .selector:hover {
+    background: #ccc;
+  }
 
-.selectorWrong {
-  background: var(--score-wrong);
-}
+  .selectorWrong {
+    background: var(--score-wrong);
+  }
 
-.selectorCorrect {
-  background: var(--score-correct);
-}
+  .selectorCorrect {
+    background: var(--score-correct);
+  }
 </style>
